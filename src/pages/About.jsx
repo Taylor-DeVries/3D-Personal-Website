@@ -75,7 +75,7 @@ export default function About() {
   const navigate = useNavigate(); // Initialize navigation
 
   return (
-    <div className="relative min-h-screen mt-4 px-6 py-16 flex flex-col items-center justify-center bg-gradient-to-br from-[#f8f9fa] to-[#eaeafc] overflow-hidden">
+    <div className="relative min-h-screen mt-6 px-6 py-16 flex flex-col items-center justify-center bg-gradient-to-br from-[#f8f9fa] to-[#eaeafc] overflow-hidden">
       <motion.h2
         className="text-4xl font-semibold text-[#333] mb-6 z-10"
         initial={{ opacity: 0, y: -20 }}
@@ -165,7 +165,7 @@ export default function About() {
       </div>
 
       {/* Top Right Torus */}
-      <div className="absolute top-10 right-10 w-60 h-60 z-0 opacity-60 hidden sm:block">
+      <div className="absolute top-10 right-10 w-60 h-60 z-0 opacity-70 hidden sm:block">
         <Canvas camera={{ position: [0, 0, 5] }}>
           <ambientLight intensity={0.5} />
           <directionalLight position={[0, 0, 5]} />
@@ -175,7 +175,7 @@ export default function About() {
       </div>
 
       {/* Bottom Left Torus Knot */}
-      <div className="absolute bottom-10 left-10 w-60 h-60 z-0 opacity-60">
+      <div className="absolute bottom-10 left-10 w-60 h-60 z-0 opacity-80">
         <Canvas camera={{ position: [0, 0, 5] }}>
           <ambientLight intensity={0.5} />
           <directionalLight position={[0, 0, 5]} />

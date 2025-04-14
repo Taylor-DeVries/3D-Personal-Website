@@ -8,7 +8,7 @@ function LilacTorus() {
   const [color, setColor] = useState("#BC86F7");
 
   const handleClick = () => {
-    const newColor = color === "#BC86F7" ? "#FF10F0" : "#BC86F7";
+    const newColor = color === "#BC86F7" ? "#BF40BF" : "#BC86F7";
     setColor(newColor);
     onClick();
   };
@@ -97,7 +97,7 @@ export default function Home() {
       </motion.button>
 
       {/* 3D Torus background */}
-      <div className="absolute bottom-4 sm:bottom-10 left-10 w-64 h-64 opacity-60 z-0">
+      <div className="absolute bottom-4 sm:bottom-10 left-10 w-64 h-64 opacity-80 z-0">
         <Canvas camera={{ position: [0, 0, 4] }}>
           <ambientLight intensity={0.4} />
           <directionalLight position={[0, 0, 5]} />
