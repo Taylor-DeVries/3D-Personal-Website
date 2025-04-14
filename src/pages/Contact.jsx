@@ -30,7 +30,7 @@ export default function Contact() {
   return (
     <div className="relative min-h-screen px-6 py-16 flex flex-col items-center justify-center bg-gradient-to-br from-[#f8f9fa] to-[#eaeafc] overflow-hidden">
       <motion.h2
-        className="text-4xl font-semibold text-[#333] mb-4"
+        className="text-4xl font-semibold text-[#333] mb-4 z-10"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
