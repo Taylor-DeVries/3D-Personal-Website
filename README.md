@@ -20,7 +20,6 @@ Welcome to my personal portfolio website! This project showcases my work, skills
 - **Frontend**: React, TailwindCSS
 - **3D & Animation**: Three.js (via `@react-three/fiber`), `@react-three/drei`, Framer Motion
 - **Routing**: React Router
-- **Audio**: Native HTML Audio API
 
 ---
 
