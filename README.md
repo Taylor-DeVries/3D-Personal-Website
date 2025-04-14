@@ -4,6 +4,12 @@ Welcome to my personal portfolio website! This project showcases my work, skills
 
 ---
 
+## 🌐 Live Preview
+
+[🔗 View the Website](https://taylor-devries.vercel.app/)
+
+---
+
 ## ✨ Features
 
 - 🧠 Minimalist and elegant design with a lilac-themed aesthetic
