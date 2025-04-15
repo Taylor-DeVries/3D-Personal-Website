@@ -77,9 +77,9 @@ function LilacTorus() {
 
 export default function Experience() {
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-[#f8f9fa] to-[#eaeafc] mt-16 px-6 py-16 flex flex-col items-center overflow-hidden">
+    <div className="relative min-h-screen mt-14 px-6 py-16 flex flex-col items-center overflow-hidden">
       <motion.h2
-        className="text-4xl font-semibold text-[#333] mb-12 z-10"
+        className="text-4xl font-semibold text-[#333] dark:text-[#f5f4f2] mb-12 z-10"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -91,7 +91,7 @@ export default function Experience() {
         {experiences.map((experience, index) => (
           <motion.div
             key={index}
-            className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition duration-300"
+            className="bg-white dark:bg-[#333] rounded-2xl shadow-md p-6 hover:shadow-lg transition duration-300"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             whileHover={{ scale: 1.03 }}
@@ -101,17 +101,23 @@ export default function Experience() {
               alt={experience.company}
               className="w-full h-40 object-cover rounded-lg mb-4"
             />
-            <h3 className="text-xl font-semibold mb-2 text-gray-800">
+            <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">
               {experience.title}
             </h3>
-            <p className="text-sm text-gray-500 mb-2">{experience.company}</p>
-            <p className="text-sm text-gray-500 mb-4">{experience.duration}</p>
-            <p className="text-gray-600 mb-4">{experience.description}</p>
+            <p className="text-sm text-gray-500 dark:text-[#f5f4f2] mb-2">
+              {experience.company}
+            </p>
+            <p className="text-sm text-gray-500 dark:text-[#f5f4f2] mb-4">
+              {experience.duration}
+            </p>
+            <p className="text-gray-600 dark:text-[#f5f4f2] mb-4">
+              {experience.description}
+            </p>
             <div className="flex flex-wrap gap-2">
               {experience.technologies.map((tech, techIndex) => (
                 <span
                   key={techIndex}
-                  className="px-2 py-1 bg-purple-100 text-purple-700 text-sm font-medium rounded-lg"
+                  className="px-2 py-1 bg-purple-100 dark:bg-purple-700 text-purple-700 dark:text-purple-100 text-sm font-medium rounded-lg"
                 >
                   {tech}
                 </span>
@@ -122,7 +128,7 @@ export default function Experience() {
       </div>
 
       {/* Floating 3D object background - Top Left */}
-      <div className="absolute top-8 left-8 w-64 h-64 opacity-60 z-0">
+      <div className="absolute top-8 left-8 w-64 h-64 opacity-60 dark:opacity-90 z-0">
         <Canvas camera={{ position: [0, 0, 4] }}>
           <ambientLight intensity={0.4} />
           <directionalLight position={[0, 0, 5]} />
@@ -132,7 +138,7 @@ export default function Experience() {
       </div>
 
       {/* Floating 3D object background - Bottom Right */}
-      <div className="absolute bottom-8 right-8 w-64 h-64 opacity-60 z-0">
+      <div className="absolute bottom-8 right-8 w-64 h-64 opacity-60 dark:opacity-90 z-0">
         <Canvas camera={{ position: [0, 0, 4] }}>
           <ambientLight intensity={0.4} />
           <directionalLight position={[0, 0, 5]} />

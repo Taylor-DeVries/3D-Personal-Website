@@ -75,9 +75,9 @@ export default function About() {
   const navigate = useNavigate(); // Initialize navigation
 
   return (
-    <div className="relative min-h-screen mt-6 px-6 py-16 flex flex-col items-center justify-center bg-gradient-to-br from-[#f8f9fa] to-[#eaeafc] overflow-hidden">
+    <div className="relative min-h-screen mt-6 px-6 py-16 flex flex-col items-center justify-center overflow-hidden">
       <motion.h2
-        className="text-4xl font-semibold text-[#333] mb-6 z-10"
+        className="text-4xl font-semibold text-[#333] dark:text-white mb-6 z-10"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -86,7 +86,7 @@ export default function About() {
       </motion.h2>
 
       <motion.p
-        className="text-lg text-gray-600 max-w-3xl text-center mb-12 z-10"
+        className="text-lg text-gray-600 dark:text-[#f5f4f2] max-w-3xl text-center mb-12 z-10"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
@@ -101,16 +101,16 @@ export default function About() {
       {/* Buttons */}
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 z-10">
         <motion.button
-          className="px-6 py-3 bg-purple-400 text-white font-semibold rounded-lg shadow-md hover:bg-purple-500 transition duration-300"
+          className="px-6 py-3 bg-purple-400 text-white dark:text-[#333] font-semibold rounded-lg shadow-md hover:bg-purple-500 transition duration-300"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          onClick={() => navigate("/contact")} // Navigate to Contact page
+          onClick={() => navigate("/contact")}
         >
           Contact me
         </motion.button>
         <motion.button
-          className="px-6 py-3 bg-purple-400 text-white font-semibold rounded-lg shadow-md hover:bg-purple-500 transition duration-300"
+          className="px-6 py-3 bg-purple-400 text-white dark:text-[#333] font-semibold rounded-lg shadow-md hover:bg-purple-500 transition duration-300"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
@@ -119,7 +119,7 @@ export default function About() {
           My projects
         </motion.button>
         <motion.button
-          className="px-6 py-3 bg-purple-400 text-white font-semibold rounded-lg shadow-md hover:bg-purple-500 transition duration-300"
+          className="px-6 py-3 bg-purple-400 text-white dark:text-[#333] font-semibold rounded-lg shadow-md hover:bg-purple-500 transition duration-300"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
@@ -132,7 +132,7 @@ export default function About() {
       {/* Skills Section */}
       <div className="w-full max-w-4xl mb-12 z-10">
         <motion.h3
-          className="text-3xl font-semibold text-[#333] mb-6 text-center"
+          className="text-3xl font-semibold text-[#333] dark:text-[#f5f4f2] mb-6 text-center"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -143,7 +143,7 @@ export default function About() {
           {skills.map((skill, index) => (
             <div key={index} className="flex flex-col items-center text-center">
               {skill.icon}
-              <p className="mt-2 text-sm font-medium text-gray-700 hidden sm:block">
+              <p className="mt-2 text-sm font-medium text-gray-700 dark:text-[#f5f4f2] hidden sm:block">
                 {skill.name}
               </p>
             </div>
@@ -165,7 +165,7 @@ export default function About() {
       </div>
 
       {/* Top Right Torus */}
-      <div className="absolute top-10 right-10 w-60 h-60 z-0 opacity-70 hidden sm:block">
+      <div className="absolute top-10 right-10 w-60 h-60 z-0 opacity-70 dark:opacity-90 hidden sm:block">
         <Canvas camera={{ position: [0, 0, 5] }}>
           <ambientLight intensity={0.5} />
           <directionalLight position={[0, 0, 5]} />
@@ -175,7 +175,7 @@ export default function About() {
       </div>
 
       {/* Bottom Left Torus Knot */}
-      <div className="absolute bottom-10 left-10 w-60 h-60 z-0 opacity-80">
+      <div className="absolute bottom-10 left-10 w-60 h-60 z-0 opacity-80 dark:opacity-90">
         <Canvas camera={{ position: [0, 0, 5] }}>
           <ambientLight intensity={0.5} />
           <directionalLight position={[0, 0, 5]} />

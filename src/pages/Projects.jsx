@@ -53,9 +53,9 @@ const projects = [
 
 export default function Projects() {
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-[#f8f9fa] to-[#eaeafc] mt-16 px-6 py-16 flex flex-col items-center lg:overflow-y-hidden overflow-y-scroll">
+    <div className="relative min-h-screen mt-14 px-6 py-16 flex flex-col items-center lg:overflow-y-hidden overflow-y-scroll">
       <motion.h2
-        className="text-4xl font-semibold text-[#333] mb-12"
+        className="text-4xl font-semibold text-[#333] dark:text-[#f5f4f2] mb-12 z-10"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -70,7 +70,7 @@ export default function Projects() {
             key={index}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition duration-300"
+            className="bg-white dark:bg-[#333] rounded-2xl shadow-md p-6 hover:shadow-lg transition duration-300"
             whileHover={{ scale: 1.03 }}
           >
             <img
@@ -78,16 +78,18 @@ export default function Projects() {
               alt={project.title}
               className="w-full h-40 object-cover rounded-lg mb-4"
             />
-            <h3 className="text-xl font-semibold mb-2 text-gray-800">
+            <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">
               {project.title}
             </h3>
-            <p className="text-gray-600">{project.description}</p>
+            <p className="text-gray-600 dark:text-[#f5f4f2]">
+              {project.description}
+            </p>
           </motion.a>
         ))}
       </div>
 
       {/* Floating 3D object background - Top Right */}
-      <div className="absolute top-8 right-8 w-64 h-64 opacity-60 z-0">
+      <div className="absolute top-8 right-8 w-64 h-64 opacity-60 dark:opacity-90 z-0">
         <Canvas camera={{ position: [0, 0, 4] }}>
           <ambientLight intensity={0.4} />
           <directionalLight position={[0, 0, 5]} />
@@ -97,7 +99,7 @@ export default function Projects() {
       </div>
 
       {/* Floating 3D object background - Bottom Left */}
-      <div className="absolute bottom-8 left-8 w-64 h-64 opacity-60 z-0 hidden sm:block">
+      <div className="absolute bottom-8 left-8 w-64 h-64 opacity-60 dark:opacity-90 z-0 hidden sm:block">
         <Canvas camera={{ position: [0, 0, 4] }}>
           <ambientLight intensity={0.4} />
           <directionalLight position={[0, 0, 5]} />
