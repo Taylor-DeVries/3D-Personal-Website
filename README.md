@@ -1,6 +1,6 @@
 # Taylor DeVries – Portfolio Website
 
-Welcome to my personal portfolio website! This project showcases my work, skills, and passion for simplifying the complex world of finance through intuitive tech.
+Welcome to my personal portfolio website! This project showcases my work, skills, and passion for simplifying complex problems through intuitive and innovative technology.
 
 ---
 
@@ -26,6 +26,7 @@ Welcome to my personal portfolio website! This project showcases my work, skills
 - **Frontend**: React, TailwindCSS
 - **3D & Animation**: Three.js (via `@react-three/fiber`), `@react-three/drei`, Framer Motion
 - **Routing**: React Router
+- **Hosting**: Vercel
 
 ---
 
