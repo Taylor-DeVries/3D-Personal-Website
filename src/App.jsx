@@ -12,11 +12,20 @@ export default function App() {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
+    const storedDarkMode = localStorage.getItem("darkMode");
+    if (storedDarkMode === "true") {
+      setDarkMode(true);
+    }
+  }, []);
+
+  useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
     }
+
+    localStorage.setItem("darkMode", darkMode);
   }, [darkMode]);
 
   return (
@@ -75,13 +84,18 @@ export default function App() {
           </div>
 
           {/* Dark Mode Toggle */}
-          <input type="checkbox" class="peer sr-only opacity-0" id="toggle" />
+          <input
+            type="checkbox"
+            className="peer sr-only opacity-0"
+            id="toggle"
+            checked={darkMode}
+            onChange={() => setDarkMode(!darkMode)}
+          />
           <label
-            for="toggle"
-            class="relative flex h-6 w-11 cursor-pointer items-center rounded-full bg-gray-400 px-0.5 outline-gray-400 transition-colors before:h-5 before:w-5 before:rounded-full before:bg-white before:shadow before:transition-transform before:duration-300 peer-checked:bg-[#333] peer-checked:before:translate-x-full peer-focus-visible:outline peer-focus-visible:outline-offset-2 peer-focus-visible:outline-gray-400 peer-checked:peer-focus-visible:outline-[#333]"
-            onClick={() => setDarkMode(!darkMode)}
+            htmlFor="toggle"
+            className="relative flex h-6 w-11 cursor-pointer items-center rounded-full bg-gray-400 px-0.5 outline-gray-400 transition-colors before:h-5 before:w-5 before:rounded-full before:bg-white before:shadow before:transition-transform before:duration-300 peer-checked:bg-[#333] peer-checked:before:translate-x-full peer-focus-visible:outline peer-focus-visible:outline-offset-2 peer-focus-visible:outline-gray-400 peer-checked:peer-focus-visible:outline-[#333]"
           >
-            <span class="sr-only">Enable</span>
+            <span className="sr-only">Enable</span>
             <div className="absolute top-0.2 left-0 dark:left-5 w-6 h-6 rounded-full shadow-md flex items-center justify-center transform transition-transform peer-checked:translate-x-5">
               {darkMode ? (
                 <FaSun className="text-yellow-600" size={12} />
