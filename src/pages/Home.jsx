@@ -52,7 +52,7 @@ export default function Home() {
   };
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center px-6 py-16 bg-gradient-to-br from-[#f8f9fa] to-[#eaeafc] overflow-hidden">
+    <div className="relative min-h-screen flex flex-col items-center justify-center px-6 py-16 overflow-hidden">
       {/* Headshot */}
       <motion.div
         className="relative w-40 h-40 rounded-full overflow-hidden shadow-lg border-4 border-purple-400 hover:scale-50 transition-transform duration-300 z-10"
@@ -68,7 +68,7 @@ export default function Home() {
       </motion.div>
 
       <motion.h1
-        className="text-5xl font-bold text-[#333] mb-4 text-center"
+        className="text-5xl font-bold text-[#333] dark:text-[#f5f4f2] mb-4 text-center"
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
@@ -76,7 +76,7 @@ export default function Home() {
         Hi, I'm Taylor
       </motion.h1>
       <motion.p
-        className="text-xl text-gray-600 max-w-xl text-center mb-8"
+        className="text-xl text-gray-600 dark:text-[#f5f4f2] max-w-xl text-center mb-8"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
@@ -87,7 +87,7 @@ export default function Home() {
 
       {/* Learn About Me Button */}
       <motion.button
-        className="px-6 py-3 bg-purple-400 text-white font-semibold rounded-lg shadow-md hover:bg-purple-500 transition duration-300 z-10"
+        className="px-6 py-3 bg-purple-400 text-white dark:text-[#333] font-semibold rounded-lg shadow-md hover:bg-purple-500 transition duration-300 z-10"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
@@ -97,7 +97,7 @@ export default function Home() {
       </motion.button>
 
       {/* 3D Torus background */}
-      <div className="absolute bottom-4 sm:bottom-10 left-10 w-64 h-64 opacity-80 z-0">
+      <div className="absolute bottom-4 sm:bottom-10 left-10 w-64 h-64 opacity-80 dark:opacity-100 z-0">
         <Canvas camera={{ position: [0, 0, 4] }}>
           <ambientLight intensity={0.4} />
           <directionalLight position={[0, 0, 5]} />
@@ -107,7 +107,7 @@ export default function Home() {
       </div>
 
       {/* 3D Knot at the top right */}
-      <div className="absolute top-10 right-10 w-64 h-64 opacity-60 z-0">
+      <div className="absolute top-10 right-10 w-64 h-64 opacity-60 dark:opacity-100 z-0">
         <Canvas camera={{ position: [0, 0, 4] }}>
           <ambientLight intensity={0.4} />
           <directionalLight position={[0, 0, 5]} />

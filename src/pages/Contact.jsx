@@ -28,9 +28,9 @@ function LilacCapsule() {
 
 export default function Contact() {
   return (
-    <div className="relative min-h-screen px-6 py-16 flex flex-col items-center justify-center bg-gradient-to-br from-[#f8f9fa] to-[#eaeafc] overflow-hidden">
+    <div className="relative min-h-screen px-6 py-16 flex flex-col items-center justify-center overflow-hidden">
       <motion.h2
-        className="text-4xl font-semibold text-[#333] mb-4 z-10"
+        className="text-4xl font-semibold text-[#333] dark:text-white mb-4 z-10"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -39,7 +39,7 @@ export default function Contact() {
       </motion.h2>
 
       <motion.p
-        className="text-lg text-gray-600 mb-6 text-center"
+        className="text-lg text-gray-600 dark:text-[#f5f4f2] mb-6 text-center"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
@@ -48,12 +48,12 @@ export default function Contact() {
         coffee.
       </motion.p>
 
-      <ul className="space-y-4 text-center mb-10">
+      <ul className="space-y-4 text-center mb-10 z-10">
         <li>
           <a
             href="https://www.linkedin.com/in/taylor-r-devries/"
             target="_blank"
-            className="text-lg text-[#333] hover:underline flex items-center justify-center space-x-2"
+            className="text-lg text-[#333] dark:text-[#f5f4f2] hover:underline flex items-center justify-center space-x-2"
           >
             <FaLinkedin className="text-2xl text-purple-600" />
             <span>Taylor | LinkedIn</span>
@@ -63,7 +63,7 @@ export default function Contact() {
           <a
             href="https://github.com/Taylor-DeVries"
             target="_blank"
-            className="text-lg text-[#333] hover:underline flex items-center justify-center space-x-2"
+            className="text-lg text-[#333] dark:text-[#f5f4f2] hover:underline flex items-center justify-center space-x-2"
           >
             <FaGithub className="text-2xl text-purple-600" />
             <span>Taylor | Github</span>
@@ -73,7 +73,7 @@ export default function Contact() {
           <a
             href="https://www.instagram.com/fin_bud_/"
             target="_blank"
-            className="text-lg text-[#333] hover:underline flex items-center justify-center space-x-2"
+            className="text-lg text-[#333] dark:text-[#f5f4f2] hover:underline flex items-center justify-center space-x-2"
           >
             <FaInstagram className="text-2xl text-purple-600" />
             <span>FinBud | Instagram</span>
@@ -83,7 +83,7 @@ export default function Contact() {
           <a
             href="https://www.linkedin.com/company/fin-bud/"
             target="_blank"
-            className="text-lg text-[#333] hover:underline flex items-center justify-center space-x-2"
+            className="text-lg text-[#333] dark:text-[#f5f4f2] hover:underline flex items-center justify-center space-x-2"
           >
             <FaLinkedinIn className="text-2xl text-purple-600" />
             <span>FinBud | LinkedIn</span>
@@ -92,7 +92,7 @@ export default function Contact() {
       </ul>
 
       {/* Top Right Blob */}
-      <div className="absolute top-10 right-10 w-72 h-72 z-0 opacity-70">
+      <div className="absolute top-10 right-10 w-72 h-72 z-0 opacity-70 dark:opacity-90">
         <Canvas camera={{ position: [0, 0, 6] }}>
           <ambientLight intensity={0.5} />
           <directionalLight position={[0, 0, 5]} />
@@ -102,7 +102,7 @@ export default function Contact() {
       </div>
 
       {/* Bottom Left Capsule */}
-      <div className="absolute bottom-10 left-10 w-72 h-72 z-0 opacity-50">
+      <div className="absolute bottom-10 left-10 w-72 h-72 z-0 opacity-50 dark:opacity-80">
         <Canvas camera={{ position: [0, 0, 6] }}>
           <ambientLight intensity={0.5} />
           <directionalLight position={[0, 0, 5]} />
