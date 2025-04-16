@@ -29,6 +29,20 @@ const projects = [
     image: "/images/projects/finbud.png",
   },
   {
+    title: "Plant Pal",
+    description:
+      "Plant Pal is a cozy virtual desk plant web app built with React, TypeScript, and Tailwind CSS. Take care of your plant while you study or work—watch it grow and react to your care in real-time!",
+    link: "https://plantpal-relax.vercel.app/",
+    image: "/images/projects/plant.png",
+  },
+  {
+    title: "Focus Cat",
+    description:
+      "Focus Cat is a minimalist Chrome extension that lets you switch between study and break modes, complete with a visual timer, cat moods, and adorable animations.",
+    link: "https://github.com/Taylor-DeVries/focus-cat",
+    image: "/images/projects/focus.png",
+  },
+  {
     title: "AR Headset",
     description:
       "Made for the SE101 course, this AR headset displays resumes next to job applicants. It uses facial recognition and AR technology to enhance the hiring process.",

@@ -34,7 +34,7 @@ export default function App() {
         <nav className="p-4 bg-purple-400 text-[#f5f4f2] dark:text-[#333] shadow-lg fixed top-0 left-0 w-full z-20 flex justify-between items-center">
           {/* Menu Toggle Button */}
           <button
-            className="sm:hidden text-lg font-bold hover:text-gray-300 transform hover:scale-110 transition-all duration-300"
+            className="sm:hidden text-lg font-bold hover:text-gray-300 "
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             ☰
@@ -48,35 +48,35 @@ export default function App() {
           >
             <Link
               to="/"
-              className="block sm:inline text-lg font-bold hover:text-gray-300 transform hover:scale-110 transition-all duration-300"
+              className="block sm:inline text-lg font-bold hover:text-gray-300"
               onClick={() => setIsMenuOpen(false)}
             >
               Home
             </Link>
             <Link
               to="/about"
-              className="block sm:inline text-lg font-bold hover:text-gray-300 transform hover:scale-110 transition-all duration-300"
+              className="block sm:inline text-lg font-bold hover:text-gray-300"
               onClick={() => setIsMenuOpen(false)}
             >
               About
             </Link>
             <Link
               to="/contact"
-              className="block sm:inline text-lg font-bold hover:text-gray-300 transform hover:scale-110 transition-all duration-300"
+              className="block sm:inline text-lg font-bold hover:text-gray-300"
               onClick={() => setIsMenuOpen(false)}
             >
               Contact
             </Link>
             <Link
               to="/projects"
-              className="block sm:inline text-lg font-bold hover:text-gray-300 transform hover:scale-110 transition-all duration-300"
+              className="block sm:inline text-lg font-bold hover:text-gray-300"
               onClick={() => setIsMenuOpen(false)}
             >
               Projects
             </Link>
             <Link
               to="/experience"
-              className="block sm:inline text-lg font-bold hover:text-gray-300 transform hover:scale-110 transition-all duration-300"
+              className="block sm:inline text-lg font-bold hover:text-gray-300 "
               onClick={() => setIsMenuOpen(false)}
             >
               Experience
