@@ -2,10 +2,6 @@
 
 Welcome to my personal portfolio website! This project showcases my work, skills, and passion for simplifying complex problems through intuitive and innovative technology.
 
----
-
-## 🌐 Live Preview
-
 [🔗 View the Website](https://taylor-devries.vercel.app/)
 
 ---
