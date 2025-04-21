@@ -36,6 +36,13 @@ const projects = [
     image: "/images/projects/plant.png",
   },
   {
+    title: "Flappy Pal",
+    description:
+      "A cute, pastel-themed Flappy Bird–style web game built with React, TypeScript, and Tailwind CSS. Tap or press space to flap your way through pink pixel pipes and beat your high score!",
+    link: "https://flappy-pal.vercel.app/",
+    image: "/images/projects/flappy.png",
+  },
+  {
     title: "Focus Cat",
     description:
       "Focus Cat is a minimalist Chrome extension that lets you switch between study and break modes, complete with a visual timer, cat moods, and adorable animations.",
