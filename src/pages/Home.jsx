@@ -41,7 +41,6 @@ function LilacKnot() {
 
 export default function Home() {
   const [animationState, setAnimationState] = useState(false);
-  const navigate = useNavigate(); // Initialize navigation
 
   const handleTorusClick = () => {
     setAnimationState(!animationState);
@@ -84,17 +83,6 @@ export default function Home() {
         A passionate software engineer focused on simplifying complex problems
         through intuitive and innovative technology.
       </motion.p>
-
-      {/* Learn About Me Button */}
-      <motion.button
-        className="px-6 py-3 bg-purple-400 text-white dark:text-[#333] font-semibold rounded-lg shadow-md hover:bg-purple-500 transition duration-300 z-10"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-        onClick={() => navigate("/about")}
-      >
-        Learn About Me
-      </motion.button>
 
       {/* 3D Torus background */}
       <div className="absolute bottom-4 sm:bottom-10 left-10 w-64 h-64 opacity-80 dark:opacity-100 z-0">
