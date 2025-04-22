@@ -27,6 +27,24 @@ const projects = [
       "FinBud is an innovative platform designed to simplify personal finance for young people. It offers an easy-to-use interface that guides users through their financial journey with step-by-step instructions.",
     link: "https://finbud.ca/",
     image: "/images/projects/finbud.png",
+    technologies: [
+      "React",
+      "Next.js",
+      "C#",
+      "DynamoDB",
+      "Auth0",
+      "TailwindCSS",
+      "AWS",
+      "Docker",
+    ],
+  },
+  {
+    title: "Personal Finance Dashboard",
+    description:
+      "A lightweight Streamlit dashboard that visualizes personal spending data. Users can upload a CSV of expenses to explore trends by category, track total spending over time, and filter by custom date ranges, all in an interactive, browser-based app.",
+    link: "https://personal-dashboard.streamlit.app/",
+    image: "/images/projects/dashboard.png",
+    technologies: ["Streamlit", "Python", "Pandas", "Matplotlib", "Seaborn"],
   },
   {
     title: "Plant Pal",
@@ -34,6 +52,14 @@ const projects = [
       "Plant Pal is a cozy virtual desk plant web app built with React, TypeScript, and Tailwind CSS. Take care of your plant while you study or work—watch it grow and react to your care in real-time!",
     link: "https://plantpal-relax.vercel.app/",
     image: "/images/projects/plant.png",
+    technologies: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "TailwindCSS",
+      "Local Storage",
+      "Vercel",
+    ],
   },
   {
     title: "Flappy Pal",
@@ -41,6 +67,7 @@ const projects = [
       "A cute, pastel-themed Flappy Bird–style web game built with React, TypeScript, and Tailwind CSS. Tap or press space to flap your way through pink pixel pipes and beat your high score!",
     link: "https://flappy-pal.vercel.app/",
     image: "/images/projects/flappy.png",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
   },
   {
     title: "Focus Cat",
@@ -48,6 +75,7 @@ const projects = [
       "Focus Cat is a minimalist Chrome extension that lets you switch between study and break modes, complete with a visual timer, cat moods, and adorable animations.",
     link: "https://github.com/Taylor-DeVries/focus-cat",
     image: "/images/projects/focus.png",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Chrome Extension"],
   },
   {
     title: "AR Headset",
@@ -55,6 +83,7 @@ const projects = [
       "Made for the SE101 course, this AR headset displays resumes next to job applicants. It uses facial recognition and AR technology to enhance the hiring process.",
     link: "https://www.youtube.com/watch?v=sjttNGrEmtk",
     image: "/images/projects/AR.png",
+    technologies: ["Unity", "C#", "AR Foundation", "Fusion 360", "Figma"],
   },
   {
     title: "BrainScape - MLH Winner 🏆",
@@ -62,6 +91,7 @@ const projects = [
       "a virtual study space revolutionizing collaborative learning. BrainScape fosters a dynamic online environment for students in the same courses to study together. ",
     link: "https://devpost.com/software/brainscape",
     image: "/images/projects/brainscape2.png",
+    technologies: ["JavaScript", "Html", "CSS", "Figma"],
   },
   {
     title: "AutoRithm Robot - WiE Hackathon",
@@ -69,6 +99,7 @@ const projects = [
       "Constructed AutoRithm robot made with Lego EV3 coded in robot-c that sorts through food items and autonomizes food packaging.",
     link: "https://devpost.com/software/handsfree-y7lsbq",
     image: "/images/projects/robot.png",
+    technologies: ["Lego EV3", "Robot-C"],
   },
 ];
 
@@ -102,9 +133,21 @@ export default function Projects() {
             <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">
               {project.title}
             </h3>
-            <p className="text-gray-600 dark:text-[#f5f4f2]">
+            <p className="text-gray-600 dark:text-[#f5f4f2] mb-4">
               {project.description}
             </p>
+            {project.technologies && (
+              <div className="flex flex-wrap gap-2">
+                {project.technologies.map((tech, techIndex) => (
+                  <span
+                    key={techIndex}
+                    className="px-2 py-1 bg-purple-100 dark:bg-purple-700 text-purple-700 dark:text-purple-100 text-sm font-medium rounded-lg"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            )}
           </motion.a>
         ))}
       </div>
