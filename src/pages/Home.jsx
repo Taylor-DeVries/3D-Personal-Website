@@ -76,7 +76,7 @@ export default function Home() {
         Hi, I'm Taylor
       </motion.h1>
       <motion.p
-        className="text-xl text-gray-600 dark:text-[#f5f4f2] max-w-xl text-center mb-8"
+        className="text-xl text-gray-600 dark:text-[#f5f4f2] max-w-xl text-center mb-8 z-10"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
