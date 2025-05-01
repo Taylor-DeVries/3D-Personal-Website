@@ -149,13 +149,21 @@ export default function Projects() {
   return (
     <section id="projects-section" className="relative py-8 px-6 flex flex-col items-center overflow-hidden">
       <motion.h2
-        className="text-4xl font-semibold text-[#333] dark:text-[#f5f4f2] mt-6 mb-8 z-10"
+        className="text-4xl font-semibold text-[#333] dark:text-[#f5f4f2] mt-6 mb-2 z-10"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
         Projects
       </motion.h2>
+      <motion.p
+        className="text-gray-600 dark:text-gray-300 mb-8 z-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        Click on projects to learn more
+      </motion.p>
 
       <div className="relative w-full overflow-hidden">
         <motion.div 
@@ -182,7 +190,7 @@ export default function Projects() {
             {projects.map((project, index) => (
               <motion.div
                 key={index}
-                className="flex flex-col items-center w-48"
+                className="flex flex-col items-center w-48 cursor-pointer"
                 variants={projectVariants}
                 whileHover="hover"
                 onClick={() => {
@@ -216,7 +224,7 @@ export default function Projects() {
             {projects.map((project, index) => (
               <motion.div
                 key={`duplicate-${index}`}
-                className="flex flex-col items-center w-48"
+                className="flex flex-col items-center w-48 cursor-pointer"
                 variants={projectVariants}
                 whileHover="hover"
                 onClick={() => {
