@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, MeshDistortMaterial } from "@react-three/drei";
-import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 import { FaReact, FaAws, FaNodeJs, FaAngular } from "react-icons/fa"; // Import icons
 import {
   SiTailwindcss,
@@ -72,10 +71,8 @@ export default function About() {
     { name: "Python", icon: <SiPython className="text-blue-500 w-8 h-8" /> },
   ];
 
-  const navigate = useNavigate(); // Initialize navigation
-
   return (
-    <div className="relative min-h-screen mt-6 px-6 py-16 flex flex-col items-center justify-center overflow-hidden">
+    <section id="about-section" className="relative min-h-screen mt-6 px-6 py-16 flex flex-col items-center justify-center overflow-hidden">
       <motion.h2
         className="text-4xl font-semibold text-[#333] dark:text-white mb-6 z-10"
         initial={{ opacity: 0, y: -20 }}
@@ -91,10 +88,10 @@ export default function About() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        I’m a Software Engineering student at the University of Waterloo with a
+        I'm a Software Engineering student at the University of Waterloo with a
         passion for building impactful technology. I have hands-on experience in
         full-stack development, working with a variety of technologies to create
-        seamless user experiences and powerful back-end solutions. I’m always
+        seamless user experiences and powerful back-end solutions. I'm always
         looking for opportunities to learn and grow.
       </motion.p>
 
@@ -105,7 +102,7 @@ export default function About() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          onClick={() => navigate("/contact")}
+          onClick={() => document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' })}
         >
           Contact me
         </motion.button>
@@ -114,7 +111,7 @@ export default function About() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          onClick={() => navigate("/projects")} // Navigate to Projects page
+          onClick={() => document.getElementById('projects-section')?.scrollIntoView({ behavior: 'smooth' })}
         >
           My projects
         </motion.button>
@@ -123,7 +120,7 @@ export default function About() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          onClick={() => navigate("/experience")} // Navigate to Experience page
+          onClick={() => document.getElementById('experience-section')?.scrollIntoView({ behavior: 'smooth' })}
         >
           My experience
         </motion.button>
@@ -183,6 +180,6 @@ export default function About() {
           <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1.4} />
         </Canvas>
       </div>
-    </div>
+    </section>
   );
 }

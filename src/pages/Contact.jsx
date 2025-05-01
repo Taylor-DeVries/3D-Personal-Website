@@ -28,7 +28,7 @@ function LilacCapsule() {
 
 export default function Contact() {
   return (
-    <div className="relative min-h-screen px-6 py-16 flex flex-col items-center justify-center overflow-hidden">
+    <section id="contact-section" className="relative min-h-screen px-6 py-16 flex flex-col items-center justify-center overflow-hidden">
       <motion.h2
         className="text-4xl font-semibold text-[#333] dark:text-white mb-4 z-10"
         initial={{ opacity: 0, y: -20 }}
@@ -44,7 +44,7 @@ export default function Contact() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        Feel free to reach out if you’d like to chat, collaborate, or grab a
+        Feel free to reach out if you'd like to chat, collaborate, or grab a
         coffee.
       </motion.p>
 
@@ -110,6 +110,6 @@ export default function Contact() {
           <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1.6} />
         </Canvas>
       </div>
-    </div>
+    </section>
   );
 }

@@ -105,7 +105,7 @@ const projects = [
 
 export default function Projects() {
   return (
-    <div className="relative min-h-screen mt-14 px-6 py-16 flex flex-col items-center lg:overflow-y-hidden overflow-y-scroll">
+    <section id="projects-section" className="relative min-h-screen mt-14 px-6 py-16 flex flex-col items-center lg:overflow-y-hidden overflow-y-scroll">
       <motion.h2
         className="text-4xl font-semibold text-[#333] dark:text-[#f5f4f2] mb-12 z-10"
         initial={{ opacity: 0, y: -20 }}
@@ -181,6 +181,6 @@ export default function Projects() {
           <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1.2} />
         </Canvas>
       </div>
-    </div>
+    </section>
   );
 }

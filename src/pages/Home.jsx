@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 function LilacTorus() {
   const [color, setColor] = useState("#BC86F7");
@@ -10,7 +9,6 @@ function LilacTorus() {
   const handleClick = () => {
     const newColor = color === "#BC86F7" ? "#BF40BF" : "#BC86F7";
     setColor(newColor);
-    onClick();
   };
 
   return (
@@ -28,7 +26,6 @@ function LilacKnot() {
   const handleClick = () => {
     setScale(scale === 1 ? 1.25 : 1);
     setRotation([Math.PI / 2, Math.PI / 2, Math.PI / 2]);
-    onClick();
   };
 
   return (
@@ -41,7 +38,6 @@ function LilacKnot() {
 
 export default function Home() {
   const [animationState, setAnimationState] = useState(false);
-  const navigate = useNavigate(); // Initialize navigation
 
   const handleTorusClick = () => {
     setAnimationState(!animationState);
@@ -91,7 +87,7 @@ export default function Home() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        onClick={() => navigate("/about")}
+        onClick={() => document.getElementById('about-section')?.scrollIntoView({ behavior: 'smooth' })}
       >
         Learn About Me
       </motion.button>
