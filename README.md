@@ -17,7 +17,6 @@ Welcome to my personal portfolio website! This project showcases my work, skills
 - 🎧 Clickable 3D objects trigger visual transformations
 - 📱 Fully responsive for mobile and desktop
 - 💡 Dark mode/Light mode toggle 
-- 🧭 Easy navigation using `react-router-dom`
 
 ---
 
