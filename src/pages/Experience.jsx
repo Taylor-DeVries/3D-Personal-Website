@@ -42,7 +42,7 @@ const experiences = [
     title: "Full Stack Developer Co-op",
     company: "Rocket Innovation Studio",
     description:
-      "Developed and thoroughly tested full stack web applications while writing 97% coverage unit and e2e tests with Cypress. Wrote robust and maintainable code while adhering to best practices, contributing to the team’s goal of maintaining high code quality and reliability",
+      "Developed and thoroughly tested full stack web applications while writing 97% coverage unit and e2e tests with Cypress. Wrote robust and maintainable code while adhering to best practices, contributing to the team's goal of maintaining high code quality and reliability",
     duration: "May 2024 - Aug 2024",
     image: "/images/experience/rocket.png",
     technologies: [
@@ -77,7 +77,7 @@ function LilacTorus() {
 
 export default function Experience() {
   return (
-    <div className="relative min-h-screen mt-14 px-6 py-16 flex flex-col items-center overflow-hidden">
+    <section id="experience-section" className="relative min-h-screen mt-14 px-6 py-16 flex flex-col items-center overflow-hidden">
       <motion.h2
         className="text-4xl font-semibold text-[#333] dark:text-[#f5f4f2] mb-12 z-10"
         initial={{ opacity: 0, y: -20 }}
@@ -146,6 +146,6 @@ export default function Experience() {
           <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1.2} />
         </Canvas>
       </div>
-    </div>
+    </section>
   );
 }

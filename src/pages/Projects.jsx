@@ -1,24 +1,5 @@
-import { motion } from "framer-motion";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-
-function LilacBlob() {
-  return (
-    <mesh scale={1.5} position={[0, 0, 0]}>
-      <icosahedronGeometry args={[1, 1]} />
-      <meshStandardMaterial color="#BC86F7" flatShading />
-    </mesh>
-  );
-}
-
-function LilacTorus() {
-  return (
-    <mesh scale={1.5} position={[0, 0, 0]}>
-      <torusGeometry args={[1, 0.4, 16, 100]} />
-      <meshStandardMaterial color="#BC86F7" flatShading />
-    </mesh>
-  );
-}
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 const projects = [
   {
@@ -104,83 +85,233 @@ const projects = [
 ];
 
 export default function Projects() {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const projectVariants = {
+    hidden: { scale: 0, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 260,
+        damping: 20
+      }
+    },
+    hover: {
+      scale: 1.05,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 10
+      }
+    }
+  };
+
+  const modalVariants = {
+    hidden: { 
+      scale: 0.8,
+      opacity: 0,
+      borderRadius: "50%"
+    },
+    visible: { 
+      scale: 1,
+      opacity: 1,
+      borderRadius: "20px",
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 25
+      }
+    },
+    exit: {
+      scale: 0.8,
+      opacity: 0,
+      borderRadius: "50%",
+      transition: {
+        duration: 0.2
+      }
+    }
+  };
+
   return (
-    <div className="relative min-h-screen mt-14 px-6 py-16 flex flex-col items-center lg:overflow-y-hidden overflow-y-scroll">
+    <section id="projects-section" className="relative py-8 px-6 flex flex-col items-center overflow-hidden">
       <motion.h2
-        className="text-4xl font-semibold text-[#333] dark:text-[#f5f4f2] mb-12 z-10"
+        className="text-4xl font-semibold text-[#333] dark:text-[#f5f4f2] mt-6 mb-2 z-10"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
         Projects
       </motion.h2>
+      <motion.p
+        className="text-gray-600 dark:text-gray-300 mb-8 z-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        Click on projects to learn more
+      </motion.p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl w-full z-10">
-        {projects.map((project, index) => (
-          <motion.a
-            href={project.link}
-            key={index}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-white dark:bg-[#333] rounded-2xl shadow-md p-6 hover:shadow-lg transition duration-300"
-            whileHover={{ scale: 1.03 }}
+      <div className="relative w-full overflow-hidden">
+        <motion.div 
+          className="flex gap-12 py-4"
+          animate={{
+            x: [0, -1000],
+          }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 20,
+              ease: "linear",
+            },
+          }}
+        >
+          {/* First set of projects */}
+          <motion.div 
+            className="flex gap-12"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
           >
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-40 object-cover rounded-lg mb-4"
-            />
-            <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">
-              {project.title}
-            </h3>
-            <p className="text-gray-600 dark:text-[#f5f4f2] mb-4">
-              {project.description}
-            </p>
-            {project.technologies && (
-              <div className="flex flex-wrap gap-2">
-                {project.technologies.map((tech, techIndex) => (
+            {projects.map((project, index) => (
+              <motion.div
+                key={index}
+                className="flex flex-col items-center w-48 cursor-pointer"
+                variants={projectVariants}
+                whileHover="hover"
+                onClick={() => {
+                  setSelectedProject(project);
+                  setIsExpanded(true);
+                }}
+              >
+                <div className="relative w-48 h-48 mb-3">
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg shadow-lg overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-300"
+                    />
+                  </div>
+                </div>
+                <h3 className="text-center font-semibold text-gray-800 dark:text-white text-base">
+                  {project.title}
+                </h3>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Duplicate set for continuous scroll */}
+          <motion.div 
+            className="flex gap-12"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {projects.map((project, index) => (
+              <motion.div
+                key={`duplicate-${index}`}
+                className="flex flex-col items-center w-48 cursor-pointer"
+                variants={projectVariants}
+                whileHover="hover"
+                onClick={() => {
+                  setSelectedProject(project);
+                  setIsExpanded(true);
+                }}
+              >
+                <div className="relative w-48 h-48 mb-3">
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg shadow-lg overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-300"
+                    />
+                  </div>
+                </div>
+                <h3 className="text-center font-semibold text-gray-800 dark:text-white text-base">
+                  {project.title}
+                </h3>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </div>
+
+      <AnimatePresence>
+        {selectedProject && isExpanded && (
+          <motion.div
+            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsExpanded(false)}
+          >
+            <motion.div
+              className="bg-white dark:bg-[#333] rounded-2xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+              variants={modalVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex justify-between items-start mb-4">
+                <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
+                  {selectedProject.title}
+                </h3>
+                <motion.button
+                  className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => setIsExpanded(false)}
+                >
+                  ✕
+                </motion.button>
+              </div>
+              <img
+                src={selectedProject.image}
+                alt={selectedProject.title}
+                className="w-full h-48 object-cover rounded-lg mb-4"
+              />
+              <p className="text-gray-600 dark:text-[#f5f4f2] mb-4">
+                {selectedProject.description}
+              </p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {selectedProject.technologies.map((tech, index) => (
                   <span
-                    key={techIndex}
+                    key={index}
                     className="px-2 py-1 bg-purple-100 dark:bg-purple-700 text-purple-700 dark:text-purple-100 text-sm font-medium rounded-lg"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
-            )}
-          </motion.a>
-        ))}
-      </div>
-
-      {/* Floating 3D object background - Top Right */}
-      <div className="absolute top-8 right-8 w-64 h-64 opacity-60 dark:opacity-90 z-0">
-        <Canvas camera={{ position: [0, 0, 4] }}>
-          <ambientLight intensity={0.4} />
-          <directionalLight position={[0, 0, 5]} />
-          <LilacBlob />
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1} />
-        </Canvas>
-      </div>
-
-      {/* Floating 3D object background - Bottom Left */}
-      <div className="absolute bottom-8 left-8 w-64 h-64 opacity-60 dark:opacity-90 z-0 hidden sm:block">
-        <Canvas camera={{ position: [0, 0, 4] }}>
-          <ambientLight intensity={0.4} />
-          <directionalLight position={[0, 0, 5]} />
-          <LilacTorus />
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1.2} />
-        </Canvas>
-      </div>
-
-      {/* Torus for Mobile */}
-      <div className="w-full mt-4 opacity-60 sm:hidden">
-        <Canvas camera={{ position: [0, 0, 4] }}>
-          <ambientLight intensity={0.4} />
-          <directionalLight position={[0, 0, 5]} />
-          <LilacTorus />
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1.2} />
-        </Canvas>
-      </div>
-    </div>
+              <motion.a
+                href={selectedProject.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-4 py-2 bg-purple-400 text-white rounded-lg hover:bg-purple-500 transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                View Project
+              </motion.a>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
   );
 }
