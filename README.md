@@ -12,7 +12,7 @@ Welcome to my personal portfolio website! This project showcases my work, skills
 ## ✨ Features
 
 - 🧠 Minimalist and elegant design with a lilac-themed aesthetic
-- 🌀 Interactive 3D elements (Torus and Knot) using `react-three-fiber` & `drei`
+- 🌀 Interactive 3D elements using `react-three-fiber` & `drei`
 - 🎨 Smooth page transitions and hover animations with `Framer Motion`
 - 🎧 Clickable 3D objects trigger visual transformations
 - 📱 Fully responsive for mobile and desktop
