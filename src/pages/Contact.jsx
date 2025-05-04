@@ -11,7 +11,7 @@ import {
 function LilacKnot() {
   return (
     <mesh scale={1.6} position={[0, 0, 0]}>
-      <torusKnotGeometry args={[1, 0.4, 100, 16]} /> {/* Torus Knot Geometry */}
+      <torusKnotGeometry args={[1, 0.4, 100, 16]} />
       <meshStandardMaterial color="#BC86F7" flatShading />
     </mesh>
   );

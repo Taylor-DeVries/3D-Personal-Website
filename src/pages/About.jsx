@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, MeshDistortMaterial } from "@react-three/drei";
-import { FaReact, FaAws, FaNodeJs, FaAngular } from "react-icons/fa"; // Import icons
+import { FaReact, FaAws, FaNodeJs, FaAngular } from "react-icons/fa"; 
 import {
   SiTailwindcss,
   SiTypescript,
@@ -9,13 +9,12 @@ import {
   SiNextdotjs,
   SiExpress,
   SiPython,
-} from "react-icons/si"; // Import more icons
+} from "react-icons/si"; 
 
 function LilacTorusKnot() {
   return (
     <mesh>
       <torusKnotGeometry args={[1.5, 0.5, 100, 16]} />{" "}
-      {/* Increased radius and tube size */}
       <MeshDistortMaterial
         color="#BC86F7"
         distort={0.2}
@@ -30,7 +29,7 @@ function LilacTorusKnot() {
 function LilacTorus() {
   return (
     <mesh>
-      <torusGeometry args={[1.7, 0.4, 16, 100]} /> {/* Torus Geometry */}
+      <torusGeometry args={[1.7, 0.4, 16, 100]} />
       <meshStandardMaterial color="#BC86F7" flatShading />
     </mesh>
   );

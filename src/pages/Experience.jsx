@@ -127,7 +127,7 @@ export default function Experience() {
         ))}
       </div>
 
-      {/* Floating 3D object background - Top Left */}
+      {/* Lilac Knot */}
       <div className="absolute top-8 left-8 w-64 h-64 opacity-60 dark:opacity-90 z-0">
         <Canvas camera={{ position: [0, 0, 4] }}>
           <ambientLight intensity={0.4} />
@@ -137,7 +137,7 @@ export default function Experience() {
         </Canvas>
       </div>
 
-      {/* Floating 3D object background - Bottom Right */}
+      {/* Lilac Torus */}
       <div className="absolute bottom-8 right-8 w-64 h-64 opacity-60 dark:opacity-90 z-0">
         <Canvas camera={{ position: [0, 0, 4] }}>
           <ambientLight intensity={0.4} />
