@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
-import { FaSun, FaMoon } from "react-icons/fa";
+import { FaSun, FaMoon, FaInfoCircle } from "react-icons/fa";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -10,6 +10,7 @@ import Experience from "./pages/Experience";
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [showInfoPopup, setShowInfoPopup] = useState(false);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -178,31 +179,62 @@ export default function App() {
           </motion.button>
         </div>
 
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <input
-            type="checkbox"
-            className="peer sr-only opacity-0"
-            id="toggle"
-            checked={darkMode}
-            onChange={() => setDarkMode(!darkMode)}
-          />
-          <label
-            htmlFor="toggle"
-            className="relative flex h-6 w-11 cursor-pointer items-center rounded-full bg-gray-400 px-0.5 outline-gray-400 transition-colors before:h-5 before:w-5 before:rounded-full before:bg-white before:shadow before:transition-transform before:duration-300 peer-checked:bg-[#333] peer-checked:before:translate-x-full peer-focus-visible:outline peer-focus-visible:outline-offset-2 peer-focus-visible:outline-gray-400 peer-checked:peer-focus-visible:outline-[#333]"
+        <div className="flex items-center gap-4">
+          <motion.div
+            className="relative"
+            onMouseEnter={() => {
+              if (window.innerWidth >= 640) { 
+                setShowInfoPopup(true);
+              }
+            }}
+            onMouseLeave={() => {
+              if (window.innerWidth >= 640) { 
+                setShowInfoPopup(false);
+              }
+            }}
+            onClick={() => setShowInfoPopup(!showInfoPopup)}
           >
-            <span className="sr-only">Enable</span>
-            <div className="absolute top-0.2 left-0 dark:left-5 w-6 h-6 rounded-full shadow-md flex items-center justify-center transform transition-transform peer-checked:translate-x-5">
-              {darkMode ? (
-                <FaSun className="text-yellow-600" size={12} />
-              ) : (
-                <FaMoon className="text-purple-600" size={12} />
+            <FaInfoCircle className="text-2xl cursor-help" />
+            <AnimatePresence>
+              {showInfoPopup && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  className="absolute right-0 mt-2 w-64 p-3 bg-white dark:bg-[#333] rounded-lg shadow-lg text-sm text-gray-600 dark:text-[#f5f4f2]"
+                >
+                  Feel free to click and drag the 3D objects for fun effects!
+                </motion.div>
               )}
-            </div>
-          </label>
-        </motion.div>
+            </AnimatePresence>
+          </motion.div>
+
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <input
+              type="checkbox"
+              className="peer sr-only opacity-0"
+              id="toggle"
+              checked={darkMode}
+              onChange={() => setDarkMode(!darkMode)}
+            />
+            <label
+              htmlFor="toggle"
+              className="relative flex h-6 w-11 cursor-pointer items-center rounded-full bg-gray-400 px-0.5 outline-gray-400 transition-colors before:h-5 before:w-5 before:rounded-full before:bg-white before:shadow before:transition-transform before:duration-300 peer-checked:bg-[#333] peer-checked:before:translate-x-full peer-focus-visible:outline peer-focus-visible:outline-offset-2 peer-focus-visible:outline-gray-400 peer-checked:peer-focus-visible:outline-[#333]"
+            >
+              <span className="sr-only">Enable</span>
+              <div className="absolute top-0.2 left-0 dark:left-5 w-6 h-6 rounded-full shadow-md flex items-center justify-center transform transition-transform peer-checked:translate-x-5">
+                {darkMode ? (
+                  <FaSun className="text-yellow-600" size={12} />
+                ) : (
+                  <FaMoon className="text-purple-600" size={12} />
+                )}
+              </div>
+            </label>
+          </motion.div>
+        </div>
       </nav>
 
       <main className="pt-16">
