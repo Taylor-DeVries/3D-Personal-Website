@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, MeshDistortMaterial } from "@react-three/drei";
+import { useState } from "react";
 import {
   FaInstagram,
   FaLinkedin,
@@ -9,19 +10,35 @@ import {
 } from "react-icons/fa";
 
 function LilacKnot() {
+  const [scale, setScale] = useState(1.6);
+  const [color, setColor] = useState("#BC86F7");
+
+  const handleClick = () => {
+    setScale(scale === 1.6 ? 2 : 1.6);
+    setColor(color === "#BC86F7" ? "#BF40BF" : "#BC86F7");
+  };
+
   return (
-    <mesh scale={1.6} position={[0, 0, 0]}>
+    <mesh onClick={handleClick} scale={scale} position={[0, 0, 0]}>
       <torusKnotGeometry args={[1, 0.4, 100, 16]} />
-      <meshStandardMaterial color="#BC86F7" flatShading />
+      <meshStandardMaterial color={color} flatShading />
     </mesh>
   );
 }
 
 function LilacCapsule() {
+  const [rotation, setRotation] = useState([Math.PI / 4, Math.PI / 4, 0]);
+  const [distort, setDistort] = useState(0.3);
+
+  const handleClick = () => {
+    setRotation([Math.PI / 2, Math.PI / 2, Math.PI / 2]);
+    setDistort(distort === 0.3 ? 0.6 : 0.3);
+  };
+
   return (
-    <mesh rotation={[Math.PI / 4, Math.PI / 4, 0]}>
+    <mesh onClick={handleClick} rotation={rotation}>
       <capsuleGeometry args={[2.5, 0.5, 16, 32]} />
-      <MeshDistortMaterial color="#BC86F7" distort={0.3} speed={2} />
+      <MeshDistortMaterial color="#BC86F7" distort={distort} speed={2} />
     </mesh>
   );
 }
