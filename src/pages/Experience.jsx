@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
+import { useState } from "react";
 
 const experiences = [
   {
@@ -58,19 +59,47 @@ const experiences = [
 ];
 
 function LilacKnot() {
+  const [rotation, setRotation] = useState([0, 0, 0]);
+  const [color, setColor] = useState("#BC86F7");
+  const [metalness, setMetalness] = useState(0.7);
+  const [roughness, setRoughness] = useState(0.3);
+
+  const handleClick = () => {
+    setRotation([Math.PI / 2, Math.PI / 2, Math.PI / 2]);
+    
+    setColor(color === "#BC86F7" ? "#9B4DCA" : "#BC86F7");
+    
+    setMetalness(metalness === 0.7 ? 0.3 : 0.7);
+    setRoughness(roughness === 0.3 ? 0.7 : 0.3);
+  };
+
   return (
-    <mesh scale={1} position={[0, 0, 0]}>
-      <torusKnotGeometry args={[1, 0.4, 100, 16]} /> {/* Torus Knot Geometry */}
-      <meshStandardMaterial color="#BC86F7" flatShading />
+    <mesh onClick={handleClick} rotation={rotation} position={[0, 0, 0]}>
+      <torusKnotGeometry args={[1, 0.4, 100, 16]} />
+      <meshStandardMaterial color={color} flatShading metalness={metalness} roughness={roughness} />
     </mesh>
   );
 }
 
 function LilacTorus() {
+  const [rotation, setRotation] = useState([0, 0, 0]);
+  const [color, setColor] = useState("#BC86F7");
+  const [metalness, setMetalness] = useState(0.5);
+  const [roughness, setRoughness] = useState(0.3);
+
+  const handleClick = () => {
+    setRotation([Math.PI / 2, Math.PI / 2, Math.PI / 2]);
+    
+    setColor(color === "#BC86F7" ? "#BF40BF" : "#BC86F7");
+    
+    setMetalness(metalness === 0.5 ? 0.9 : 0.5);
+    setRoughness(roughness === 0.3 ? 0.7 : 0.3);
+  };
+
   return (
-    <mesh scale={1.5} position={[0, 0, 0]}>
+    <mesh onClick={handleClick} rotation={rotation} scale={1.5} position={[0, 0, 0]}>
       <torusGeometry args={[1, 0.4, 16, 100]} />
-      <meshStandardMaterial color="#BC86F7" flatShading />
+      <meshStandardMaterial color={color} flatShading metalness={metalness} roughness={roughness} />
     </mesh>
   );
 }
@@ -133,7 +162,7 @@ export default function Experience() {
           <ambientLight intensity={0.4} />
           <directionalLight position={[0, 0, 5]} />
           <LilacKnot />
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1} />
+          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={3} />
         </Canvas>
       </div>
 
@@ -143,7 +172,7 @@ export default function Experience() {
           <ambientLight intensity={0.4} />
           <directionalLight position={[0, 0, 5]} />
           <LilacTorus />
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1.2} />
+          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={3} />
         </Canvas>
       </div>
     </section>

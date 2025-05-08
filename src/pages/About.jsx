@@ -10,15 +10,24 @@ import {
   SiExpress,
   SiPython,
 } from "react-icons/si"; 
+import { useState } from "react";
 
 function LilacTorusKnot() {
+  const [distort, setDistort] = useState(0.2);
+  const [speed, setSpeed] = useState(2.5);
+
+  const handleClick = () => {
+    setDistort(distort === 0.2 ? 0.5 : 0.2);
+    setSpeed(speed === 2.5 ? 5 : 2.5);
+  };
+
   return (
-    <mesh>
-      <torusKnotGeometry args={[1.5, 0.5, 100, 16]} />{" "}
+    <mesh onClick={handleClick}>
+      <torusKnotGeometry args={[1.5, 0.5, 100, 16]} />
       <MeshDistortMaterial
         color="#BC86F7"
-        distort={0.2}
-        speed={2.5}
+        distort={distort}
+        speed={speed}
         metalness={0.7}
         roughness={0.2}
       />
@@ -27,8 +36,16 @@ function LilacTorusKnot() {
 }
 
 function LilacTorus() {
+  const [scale, setScale] = useState(1);
+  const [rotation, setRotation] = useState([0, 0, 0]);
+
+  const handleClick = () => {
+    setScale(scale === 1 ? 1.3 : 1);
+    setRotation([Math.PI / 2, Math.PI / 2, 0]);
+  };
+
   return (
-    <mesh>
+    <mesh onClick={handleClick} scale={scale} rotation={rotation}>
       <torusGeometry args={[1.7, 0.4, 16, 100]} />
       <meshStandardMaterial color="#BC86F7" flatShading />
     </mesh>
@@ -165,8 +182,8 @@ export default function About() {
         <Canvas camera={{ position: [0, 0, 5] }}>
           <ambientLight intensity={0.5} />
           <directionalLight position={[0, 0, 5]} />
-          <LilacTorus /> {/* Changed from LilacCone to LilacTorus */}
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1.3} />
+          <LilacTorus />
+          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={3} />
         </Canvas>
       </div>
 
@@ -176,7 +193,7 @@ export default function About() {
           <ambientLight intensity={0.5} />
           <directionalLight position={[0, 0, 5]} />
           <LilacTorusKnot />
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1.4} />
+          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={3} />
         </Canvas>
       </div>
     </section>
