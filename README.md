@@ -33,5 +33,3 @@ Welcome to my personal portfolio website! This project showcases my work, skills
 Want to collaborate or just say hi? Reach me at:
 
 💼 LinkedIn: - [linkedin.com/in/taylor-r-devries](https://www.linkedin.com/in/taylor-r-devries)
-
-
