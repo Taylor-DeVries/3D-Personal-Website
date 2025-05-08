@@ -97,7 +97,7 @@ export default function Contact() {
           <ambientLight intensity={0.5} />
           <directionalLight position={[0, 0, 5]} />
           <LilacKnot />
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1.6} />
+          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={3} />
         </Canvas>
       </div>
 
@@ -107,7 +107,7 @@ export default function Contact() {
           <ambientLight intensity={0.5} />
           <directionalLight position={[0, 0, 5]} />
           <LilacCapsule />
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1.6} />
+          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={3} />
         </Canvas>
       </div>
     </section>

@@ -166,7 +166,7 @@ export default function About() {
           <ambientLight intensity={0.5} />
           <directionalLight position={[0, 0, 5]} />
           <LilacTorus /> {/* Changed from LilacCone to LilacTorus */}
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1.3} />
+          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={3} />
         </Canvas>
       </div>
 
@@ -176,7 +176,7 @@ export default function About() {
           <ambientLight intensity={0.5} />
           <directionalLight position={[0, 0, 5]} />
           <LilacTorusKnot />
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1.4} />
+          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={3} />
         </Canvas>
       </div>
     </section>

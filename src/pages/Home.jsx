@@ -132,7 +132,7 @@ export default function Home() {
           <ambientLight intensity={0.4} />
           <directionalLight position={[0, 0, 5]} />
           <LilacTorus onClick={handleTorusClick} />
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1.5} />
+          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={3} />
         </Canvas>
       </motion.div>
 
@@ -147,7 +147,7 @@ export default function Home() {
           <ambientLight intensity={0.4} />
           <directionalLight position={[0, 0, 5]} />
           <LilacKnot onClick={handleKnotClick} />
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1.5} />
+          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={3} />
         </Canvas>
       </motion.div>
     </motion.div>

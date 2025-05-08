@@ -133,7 +133,7 @@ export default function Experience() {
           <ambientLight intensity={0.4} />
           <directionalLight position={[0, 0, 5]} />
           <LilacKnot />
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1} />
+          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={3} />
         </Canvas>
       </div>
 
@@ -143,7 +143,7 @@ export default function Experience() {
           <ambientLight intensity={0.4} />
           <directionalLight position={[0, 0, 5]} />
           <LilacTorus />
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1.2} />
+          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={3} />
         </Canvas>
       </div>
     </section>
