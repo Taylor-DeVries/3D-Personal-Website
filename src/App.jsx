@@ -71,7 +71,7 @@ export default function App() {
         style={{ scaleX }}
       />
       
-      <nav className="p-4 bg-purple-400 text-[#f5f4f2] dark:text-[#333] shadow-lg fixed top-0 left-0 w-full z-20 flex justify-between items-center">
+      <nav className="p-4 bg-purple-400/80 backdrop-blur-md text-[#f5f4f2] dark:text-[#333] shadow-lg fixed top-0 left-0 w-full z-20 flex justify-between items-center">
         <motion.button
           className="sm:hidden text-lg font-bold hover:text-gray-300"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -139,11 +139,12 @@ export default function App() {
         <div className="hidden sm:flex space-x-4">
           <motion.button
             onClick={() => scrollToSection(homeRef)}
-            className="text-lg font-bold hover:text-gray-300"
+            className="text-lg font-bold hover:text-white dark:hover:text-purple-200 transition-colors duration-300 relative group"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Home
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white dark:bg-purple-200 transition-all duration-300 group-hover:w-full"></span>
           </motion.button>
           <motion.button
             onClick={() => scrollToSection(aboutRef)}

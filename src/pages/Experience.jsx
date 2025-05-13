@@ -6,7 +6,7 @@ import { useState } from "react";
 const experiences = [
   {
     title: "Full Stack Developer Co-op",
-    company: "Rocket Innovation Studio",
+    company: "Rocket",
     description:
       "Developing and optimizing core features for Rocket.com ensuring a seamless user experience across the platform. Collaborating with cross-functional Agile teams to gather requirements, analyze technical challenges, and implement scalable solutions that meet business objectives.",
     duration: "Jan 2025 - April 2025",
@@ -41,7 +41,7 @@ const experiences = [
   },
   {
     title: "Full Stack Developer Co-op",
-    company: "Rocket Innovation Studio",
+    company: "Rocket",
     description:
       "Developed and thoroughly tested full stack web applications while writing 97% coverage unit and e2e tests with Cypress. Wrote robust and maintainable code while adhering to best practices, contributing to the team's goal of maintaining high code quality and reliability",
     duration: "May 2024 - Aug 2024",
@@ -120,37 +120,46 @@ export default function Experience() {
         {experiences.map((experience, index) => (
           <motion.div
             key={index}
-            className="bg-white dark:bg-[#333] rounded-2xl shadow-md p-6 hover:shadow-lg transition duration-300"
+            className="bg-white/80 dark:bg-[#333]/80 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 border border-purple-100 dark:border-purple-800 group"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            whileHover={{ scale: 1.03 }}
+            whileHover={{ 
+              scale: 1.03
+            }}
           >
-            <img
-              src={experience.image}
-              alt={experience.company}
-              className="w-full h-40 object-cover rounded-lg mb-4"
-            />
-            <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">
-              {experience.title}
-            </h3>
-            <p className="text-sm text-gray-500 dark:text-[#f5f4f2] mb-2">
-              {experience.company}
-            </p>
-            <p className="text-sm text-gray-500 dark:text-[#f5f4f2] mb-4">
-              {experience.duration}
-            </p>
-            <p className="text-gray-600 dark:text-[#f5f4f2] mb-4">
-              {experience.description}
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {experience.technologies.map((tech, techIndex) => (
-                <span
-                  key={techIndex}
-                  className="px-2 py-1 bg-purple-100 dark:bg-purple-700 text-purple-700 dark:text-purple-100 text-sm font-medium rounded-lg"
-                >
-                  {tech}
+            <div className="relative overflow-hidden rounded-lg mb-4 group">
+              <img
+                src={experience.image}
+                alt={experience.company}
+                className="w-full h-48 object-cover transform transition-transform duration-500 group-hover:scale-110"
+              />
+            </div>
+            <div className="space-y-3">
+              <h3 className="text-xl font-semibold text-gray-800 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
+                {experience.title}
+              </h3>
+              <div className="flex items-center space-x-2">
+                <span className="text-sm font-medium text-purple-600 dark:text-purple-400">
+                  {experience.company}
                 </span>
-              ))}
+                <span className="text-sm text-gray-500 dark:text-gray-400">•</span>
+                <span className="text-sm text-gray-500 dark:text-gray-400">
+                  {experience.duration}
+                </span>
+              </div>
+              <p className="text-gray-600 dark:text-[#f5f4f2]">
+                {experience.description}
+              </p>
+              <div className="flex flex-wrap gap-2 pt-2">
+                {experience.technologies.map((tech, techIndex) => (
+                  <span
+                    key={techIndex}
+                    className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 text-sm font-medium rounded-full transition-colors duration-300 group-hover:bg-purple-200 dark:group-hover:bg-purple-800"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
           </motion.div>
         ))}
