@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const projects = [
   {
@@ -87,6 +87,105 @@ const projects = [
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [isExpanded, setIsExpanded] = useState(false);
+  const scrollRef = useRef(null);
+  const isDragging = useRef(false);
+  const dragStartX = useRef(0);
+  const scrollStartX = useRef(0);
+  const autoScrollInterval = useRef(null);
+  const autoScrollPaused = useRef(false);
+  const AUTO_SCROLL_SPEED = 1.2; // px per frame
+  const AUTO_SCROLL_PAUSE_DURATION = 2000; // ms
+
+  // Auto-scroll logic
+  useEffect(() => {
+    let frameId;
+    function autoScroll() {
+      if (!autoScrollPaused.current && scrollRef.current) {
+        scrollRef.current.scrollLeft += AUTO_SCROLL_SPEED;
+        // Loop scroll
+        if (
+          scrollRef.current.scrollLeft + scrollRef.current.offsetWidth >=
+          scrollRef.current.scrollWidth
+        ) {
+          scrollRef.current.scrollLeft = 0;
+        }
+      }
+      frameId = requestAnimationFrame(autoScroll);
+    }
+    frameId = requestAnimationFrame(autoScroll);
+    return () => cancelAnimationFrame(frameId);
+  }, []);
+
+  // Drag-to-scroll logic
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const onMouseDown = (e) => {
+      isDragging.current = true;
+      dragStartX.current = e.pageX - container.offsetLeft;
+      scrollStartX.current = container.scrollLeft;
+      autoScrollPaused.current = true;
+      container.classList.add("cursor-grabbing");
+    };
+    const onMouseMove = (e) => {
+      if (!isDragging.current) return;
+      const x = e.pageX - container.offsetLeft;
+      const walk = (dragStartX.current - x);
+      container.scrollLeft = scrollStartX.current + walk;
+    };
+    const onMouseUp = () => {
+      if (isDragging.current) {
+        isDragging.current = false;
+        container.classList.remove("cursor-grabbing");
+        // Resume auto-scroll after a delay
+        setTimeout(() => {
+          autoScrollPaused.current = false;
+        }, AUTO_SCROLL_PAUSE_DURATION);
+      }
+    };
+    // Touch events
+    const onTouchStart = (e) => {
+      isDragging.current = true;
+      dragStartX.current = e.touches[0].pageX - container.offsetLeft;
+      scrollStartX.current = container.scrollLeft;
+      autoScrollPaused.current = true;
+      container.classList.add("cursor-grabbing");
+    };
+    const onTouchMove = (e) => {
+      if (!isDragging.current) return;
+      const x = e.touches[0].pageX - container.offsetLeft;
+      const walk = (dragStartX.current - x);
+      container.scrollLeft = scrollStartX.current + walk;
+    };
+    const onTouchEnd = () => {
+      if (isDragging.current) {
+        isDragging.current = false;
+        container.classList.remove("cursor-grabbing");
+        setTimeout(() => {
+          autoScrollPaused.current = false;
+        }, AUTO_SCROLL_PAUSE_DURATION);
+      }
+    };
+    // Mouse events
+    container.addEventListener("mousedown", onMouseDown);
+    container.addEventListener("mousemove", onMouseMove);
+    container.addEventListener("mouseleave", onMouseUp);
+    container.addEventListener("mouseup", onMouseUp);
+    // Touch events
+    container.addEventListener("touchstart", onTouchStart);
+    container.addEventListener("touchmove", onTouchMove);
+    container.addEventListener("touchend", onTouchEnd);
+    return () => {
+      container.removeEventListener("mousedown", onMouseDown);
+      container.removeEventListener("mousemove", onMouseMove);
+      container.removeEventListener("mouseleave", onMouseUp);
+      container.removeEventListener("mouseup", onMouseUp);
+      container.removeEventListener("touchstart", onTouchStart);
+      container.removeEventListener("touchmove", onTouchMove);
+      container.removeEventListener("touchend", onTouchEnd);
+    };
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -162,92 +261,37 @@ export default function Projects() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        Click on projects to learn more
+        Scroll through and click on projects to learn more
       </motion.p>
 
-      <div className="relative w-full overflow-hidden">
-        <motion.div 
-          className="flex gap-12 py-4"
-          animate={{
-            x: [0, -1000],
-          }}
-          transition={{
-            x: {
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 20,
-              ease: "linear",
-            },
-          }}
-        >
-          {/* First set of projects */}
-          <motion.div 
-            className="flex gap-12"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            {projects.map((project, index) => (
-              <motion.div
-                key={index}
-                className="flex flex-col items-center w-48 cursor-pointer"
-                variants={projectVariants}
-                whileHover="hover"
-                onClick={() => {
-                  setSelectedProject(project);
-                  setIsExpanded(true);
-                }}
-              >
-                <div className="relative w-48 h-48 mb-3">
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg shadow-lg overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-300"
-                    />
-                  </div>
+      <div className="relative w-full overflow-x-auto overflow-y-hidden hide-scrollbar" ref={scrollRef} style={{ cursor: 'grab', WebkitOverflowScrolling: 'touch' }}>
+        <div className="flex gap-12 py-4 whitespace-nowrap select-none">
+          {projects.concat(projects).map((project, index) => (
+            <motion.div
+              key={index}
+              className="flex flex-col items-center w-48 cursor-pointer"
+              variants={projectVariants}
+              whileHover="hover"
+              onClick={() => {
+                setSelectedProject(project);
+                setIsExpanded(true);
+              }}
+            >
+              <div className="relative w-48 h-48 mb-3">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg shadow-lg overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-300"
+                  />
                 </div>
-                <h3 className="text-center font-semibold text-gray-800 dark:text-white text-base">
-                  {project.title}
-                </h3>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Duplicate set for continuous scroll */}
-          <motion.div 
-            className="flex gap-12"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            {projects.map((project, index) => (
-              <motion.div
-                key={`duplicate-${index}`}
-                className="flex flex-col items-center w-48 cursor-pointer"
-                variants={projectVariants}
-                whileHover="hover"
-                onClick={() => {
-                  setSelectedProject(project);
-                  setIsExpanded(true);
-                }}
-              >
-                <div className="relative w-48 h-48 mb-3">
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg shadow-lg overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-300"
-                    />
-                  </div>
-                </div>
-                <h3 className="text-center font-semibold text-gray-800 dark:text-white text-base">
-                  {project.title}
-                </h3>
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.div>
+              </div>
+              <h3 className="text-center font-semibold text-gray-800 dark:text-white text-base">
+                {project.title}
+              </h3>
+            </motion.div>
+          ))}
+        </div>
       </div>
 
       <AnimatePresence>
