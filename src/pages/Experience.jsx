@@ -5,6 +5,22 @@ import { useState } from "react";
 
 const experiences = [
   {
+    title: "Mobile Software Engineering Intern",
+    company: "Vivid Seats",
+    description:
+      "Contributing to the Vivid Seats mobile app by building customer-facing features in React Native for iOS and Android. Partnering with product and design to refine flows and UI, aligning implementations with accessibility and performance best practices. Troubleshooting and optimizing performance (rendering, network usage, start-up time) using Xcode and Android profilers and structured logging and analytics.",
+    duration: "Sept 2025 - Present",
+    image: "/images/experience/vividSeats.png",
+    technologies: [
+      "React Native",
+      "iOS",
+      "Android",
+      "Xcode",
+      "TypeScript",
+      "Redux",
+    ],
+  },
+  {
     title: "Full Stack Developer Co-op",
     company: "Rocket",
     description:
