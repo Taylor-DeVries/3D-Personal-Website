@@ -7,26 +7,27 @@ const experiences = [
   {
     title: "Mobile Software Engineering Intern",
     company: "Vivid Seats",
-    description:
-      "Contributing to the Vivid Seats mobile app by building customer-facing features in React Native for iOS and Android. Partnering with product and design to refine flows and UI, aligning implementations with accessibility and performance best practices. Troubleshooting and optimizing performance (rendering, network usage, start-up time) using Xcode and Android profilers and structured logging and analytics.",
+    // description:
+    //   "Contributing to the Vivid Seats mobile app by building customer-facing features in React Native for iOS and Android. Partnering with product and design to refine flows and UI, aligning implementations with accessibility and performance best practices. Troubleshooting and optimizing performance (rendering, network usage, start-up time) using Xcode and Android profilers and structured logging and analytics.",
     duration: "Sept 2025 - Present",
     image: "/images/experience/vividSeats.png",
     technologies: [
       "React Native",
-      "iOS",
-      "Android",
+      "Typescript",
+      "iOS Dev",
+      "Android Dev",
       "Xcode",
-      "TypeScript",
-      "Redux",
+      "Expo",
+      
     ],
   },
   {
     title: "Full Stack Developer Co-op",
     company: "Rocket",
-    description:
-      "Developing and optimizing core features for Rocket.com ensuring a seamless user experience across the platform. Collaborating with cross-functional Agile teams to gather requirements, analyze technical challenges, and implement scalable solutions that meet business objectives.",
+    // description:
+    //   "Developing and optimizing core features for Rocket.com ensuring a seamless user experience across the platform. Collaborating with cross-functional Agile teams to gather requirements, analyze technical challenges, and implement scalable solutions that meet business objectives.",
     duration: "Jan 2025 - April 2025",
-    image: "/images/experience/rocket2.png",
+    image: "/images/experience/rocket.png",
     technologies: [
       "Angular",
       "React",
@@ -40,8 +41,8 @@ const experiences = [
   {
     title: "Co-Founder, Lead Software Engineer",
     company: "FinBud",
-    description:
-      "Created a user-centric decision tree model to deliver tailored financial advice. Directing a team of 4 developers in creating a web application using React, Next.js, Docker, and AWS. Implemented a CI/CD pipeline in AWS and hosted the application with AWS Amplify",
+    // description:
+    //   "Created a user-centric decision tree model to deliver tailored financial advice. Directing a team of 4 developers in creating a web application using React, Next.js, Docker, and AWS. Implemented a CI/CD pipeline in AWS and hosted the application with AWS Amplify",
     duration: "July 2024 - Present",
     image: "/images/experience/finLogo.png",
     technologies: [
@@ -58,8 +59,8 @@ const experiences = [
   {
     title: "Full Stack Developer Co-op",
     company: "Rocket",
-    description:
-      "Developed and thoroughly tested full stack web applications while writing 97% coverage unit and e2e tests with Cypress. Wrote robust and maintainable code while adhering to best practices, contributing to the team's goal of maintaining high code quality and reliability",
+    // description:
+    //   "Developed and thoroughly tested full stack web applications while writing 97% coverage unit and e2e tests with Cypress. Wrote robust and maintainable code while adhering to best practices, contributing to the team's goal of maintaining high code quality and reliability",
     duration: "May 2024 - Aug 2024",
     image: "/images/experience/rocket.png",
     technologies: [
@@ -122,7 +123,7 @@ function LilacTorus() {
 
 export default function Experience() {
   return (
-    <section id="experience-section" className="relative min-h-screen mt-14 px-6 py-16 flex flex-col items-center overflow-hidden">
+    <section id="experience-section" className="relative mt-4 px-6 py-12 flex flex-col items-center overflow-hidden">
       <motion.h2
         className="text-4xl font-semibold text-[#333] dark:text-[#f5f4f2] mb-12 z-10"
         initial={{ opacity: 0, y: -20 }}
@@ -132,7 +133,7 @@ export default function Experience() {
         My Experience
       </motion.h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl w-full z-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl w-full z-10">
         {experiences.map((experience, index) => (
           <motion.div
             key={index}
@@ -147,14 +148,14 @@ export default function Experience() {
               <img
                 src={experience.image}
                 alt={experience.company}
-                className="w-full h-48 object-cover transform transition-transform duration-500 group-hover:scale-110"
+                className="w-full h-48 object-contain bg-white/50 dark:bg-[#333] p-4 transform transition-transform duration-500 group-hover:scale-110"
               />
             </div>
             <div className="space-y-3">
               <h3 className="text-xl font-semibold text-gray-800 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
                 {experience.title}
               </h3>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 whitespace-nowrap">
                 <span className="text-sm font-medium text-purple-600 dark:text-purple-400">
                   {experience.company}
                 </span>
@@ -163,9 +164,9 @@ export default function Experience() {
                   {experience.duration}
                 </span>
               </div>
-              <p className="text-gray-600 dark:text-[#f5f4f2]">
+              {/* <p className="text-gray-600 dark:text-[#f5f4f2]">
                 {experience.description}
-              </p>
+              </p> */}
               <div className="flex flex-wrap gap-2 pt-2">
                 {experience.technologies.map((tech, techIndex) => (
                   <span
@@ -182,7 +183,7 @@ export default function Experience() {
       </div>
 
       {/* Lilac Knot */}
-      <div className="absolute top-8 left-8 w-64 h-64 opacity-60 dark:opacity-90 z-0">
+      <div className="absolute top-8 right-8 w-64 h-64 opacity-60 dark:opacity-90 z-0">
         <Canvas camera={{ position: [0, 0, 4] }}>
           <ambientLight intensity={0.4} />
           <directionalLight position={[0, 0, 5]} />
@@ -192,7 +193,7 @@ export default function Experience() {
       </div>
 
       {/* Lilac Torus */}
-      <div className="absolute bottom-8 right-8 w-64 h-64 opacity-60 dark:opacity-90 z-0">
+      <div className="absolute bottom-8 left-8 w-64 h-64 opacity-60 dark:opacity-90 z-0">
         <Canvas camera={{ position: [0, 0, 4] }}>
           <ambientLight intensity={0.4} />
           <directionalLight position={[0, 0, 5]} />
