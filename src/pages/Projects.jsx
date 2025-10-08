@@ -3,6 +3,22 @@ import { useState, useRef, useEffect } from "react";
 
 const projects = [
   {
+    title: "F1 Telemetry Dashboard",
+    description:
+      "A comprehensive Formula 1 telemetry dashboard featuring real-time data visualization, driver performance metrics, track mapping, and interactive telemetry analysis. Built with modern web technologies to provide an immersive F1 racing experience with live speed, RPM, throttle, and brake data visualization.",
+    link: "https://f1-telemetry-dashboard.vercel.app/",
+    image: "/images/projects/f1-dashboard.png",
+    technologies: [
+      "React",
+      "TypeScript",
+      "D3.js",
+      "Chart.js",
+      "TailwindCSS",
+      "Real-time Data",
+      "Data Visualization",
+    ],
+  },
+  {
     title: "FinBud",
     description:
       "FinBud is an innovative platform designed to simplify personal finance for young people. It offers an easy-to-use interface that guides users through their financial journey with step-by-step instructions.",
@@ -67,15 +83,15 @@ const projects = [
     technologies: ["Unity", "C#", "AR Foundation", "Fusion 360", "Figma"],
   },
   {
-    title: "BrainScape - MLH Winner 🏆",
+    title: "BrainScape",
     description:
       "a virtual study space revolutionizing collaborative learning. BrainScape fosters a dynamic online environment for students in the same courses to study together. ",
     link: "https://devpost.com/software/brainscape",
     image: "/images/projects/brainscape2.png",
-    technologies: ["JavaScript", "Html", "CSS", "Figma"],
+    technologies: ["JavaScript", "Html", "CSS", "Figma", "MLH Winner 🏆"],
   },
   {
-    title: "AutoRithm Robot - WiE Hackathon",
+    title: "AutoRithm Robot",
     description:
       "Constructed AutoRithm robot made with Lego EV3 coded in robot-c that sorts through food items and autonomizes food packaging.",
     link: "https://devpost.com/software/handsfree-y7lsbq",
