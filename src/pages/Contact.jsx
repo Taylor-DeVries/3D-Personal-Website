@@ -101,42 +101,6 @@ export default function Contact() {
             </div>
           </div>
         </motion.a>
-
-        <motion.a
-          href="https://www.instagram.com/fin_bud_/"
-          target="_blank"
-          className="bg-white/80 dark:bg-[#333]/80 backdrop-blur-md rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-purple-100 dark:border-purple-800 group"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          <div className="flex items-center space-x-4">
-            <div className="bg-purple-100 dark:bg-purple-900 p-3 rounded-lg group-hover:bg-purple-200 dark:group-hover:bg-purple-800 transition-colors duration-300">
-              <FaInstagram className="text-2xl text-purple-600 dark:text-purple-300" />
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-gray-800 dark:text-white">Instagram</h3>
-              <p className="text-gray-600 dark:text-gray-300">Follow FinBud</p>
-            </div>
-          </div>
-        </motion.a>
-
-        <motion.a
-          href="https://www.linkedin.com/company/fin-bud/"
-          target="_blank"
-          className="bg-white/80 dark:bg-[#333]/80 backdrop-blur-md rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-purple-100 dark:border-purple-800 group"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          <div className="flex items-center space-x-4">
-            <div className="bg-purple-100 dark:bg-purple-900 p-3 rounded-lg group-hover:bg-purple-200 dark:group-hover:bg-purple-800 transition-colors duration-300">
-              <FaLinkedinIn className="text-2xl text-purple-600 dark:text-purple-300" />
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-gray-800 dark:text-white">LinkedIn</h3>
-              <p className="text-gray-600 dark:text-gray-300">Follow FinBud</p>
-            </div>
-          </div>
-        </motion.a>
       </div>
 
       {/* Top Right Blob */}

@@ -103,20 +103,20 @@ export default function About() {
       </motion.h2>
 
       <motion.p
-        className="text-lg text-gray-600 dark:text-[#f5f4f2] max-w-3xl text-center mb-12 z-10"
+        className="text-sm md:text-base text-gray-600 dark:text-[#f5f4f2] max-w-3xl text-center mb-12 z-10"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
         I'm a Software Engineering student at the University of Waterloo with a
         passion for building impactful technology. I have hands-on experience in
-        full-stack development, working with a variety of technologies to create
+        full-stack and mobile development, working with a variety of technologies to create
         seamless user experiences and powerful back-end solutions. I'm always
         looking for opportunities to learn and grow.
       </motion.p>
 
       {/* Buttons */}
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 z-10">
+      <div className="flex flex-row items-center justify-center gap-2 sm:gap-4 mb-12 z-10 flex-wrap">
         <motion.button
           className="px-6 py-3 bg-purple-400 text-white dark:text-[#333] font-semibold rounded-lg shadow-md hover:bg-purple-500 transition duration-300"
           initial={{ opacity: 0, y: 10 }}
