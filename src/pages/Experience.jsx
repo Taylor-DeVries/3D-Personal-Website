@@ -5,6 +5,22 @@ import { useState } from "react";
 
 const experiences = [
   {
+    title: "Software Engineering Intern",
+    company: "Shopify",
+    team: "Commerce Trust & Integrity",
+    duration: "May 2026 - Present",
+    image: "/images/experience/shopify.png",
+    technologies: [
+      "Ruby",
+      "Rails",
+      "GraphQL",
+      "Trust & Integrity",
+      "Graphite",
+      "Pi",
+      "Claude Code",
+    ],
+  },
+  {
     title: "Mobile Software Engineering Intern",
     company: "Vivid Seats",
     // description:
@@ -155,14 +171,21 @@ export default function Experience() {
               <h3 className="text-xl font-semibold text-gray-800 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
                 {experience.title}
               </h3>
-              <div className="flex items-center space-x-2 whitespace-nowrap">
-                <span className="text-sm font-medium text-purple-600 dark:text-purple-400">
-                  {experience.company}
-                </span>
-                <span className="text-sm text-gray-500 dark:text-gray-400">•</span>
-                <span className="text-sm text-gray-500 dark:text-gray-400">
-                  {experience.duration}
-                </span>
+              <div className="space-y-1">
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                  <span className="text-sm font-medium text-purple-600 dark:text-purple-400">
+                    {experience.company}
+                  </span>
+                  <span className="text-sm text-gray-500 dark:text-gray-400">•</span>
+                  <span className="text-sm text-gray-500 dark:text-gray-400">
+                    {experience.duration}
+                  </span>
+                </div>
+                {experience.team && (
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                    {experience.team}
+                  </p>
+                )}
               </div>
               {/* <p className="text-gray-600 dark:text-[#f5f4f2]">
                 {experience.description}
