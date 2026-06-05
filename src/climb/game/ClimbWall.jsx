@@ -45,6 +45,9 @@ export default function ClimbWall({
   }, []);
 
   const { vw, vh } = size;
+  const isMobile = vw < 640;
+  const holdScale = isMobile ? 0.78 : 1;
+  const avatarScale = isMobile ? 0.78 : 1;
   const worldPx = (WORLD_VH / 100) * vh;
   const anchorPx = CLIMBER_ANCHOR * vh;
 
@@ -59,6 +62,9 @@ export default function ClimbWall({
     if (!reachableHint || !currentHold) return new Set();
     return new Set(holds.filter((h) => isReachable(currentHold, h)).map((h) => h.id));
   }, [holds, currentHold, reachableHint]);
+
+  // Fewer decorative holds on small screens to keep things light and uncluttered.
+  const decorShown = isMobile ? decor.slice(0, 22) : decor;
 
   const avatarLeft = useTransform(avatarX, (x) => `${x}%`);
 
@@ -84,7 +90,7 @@ export default function ClimbWall({
         }}
       >
         {/* Decorative holds */}
-        {decor.map((d) => (
+        {decorShown.map((d) => (
           <span
             key={d.id}
             aria-hidden="true"
@@ -92,8 +98,8 @@ export default function ClimbWall({
             style={{
               left: `${d.x}%`,
               bottom: `${d.y * 100}%`,
-              width: d.size,
-              height: d.size,
+              width: d.size * holdScale,
+              height: d.size * holdScale,
               background: `radial-gradient(circle at 34% 28%, #ffffff55, ${d.color}99 55%, #00000055)`,
               boxShadow: "0 4px 6px rgba(0,0,0,0.35)",
               opacity: 0.4,
@@ -112,6 +118,7 @@ export default function ClimbWall({
             reachable={reachableIds.has(h.id)}
             gemCollected={collectedGems.has(h.id)}
             mysteryFound={foundSecrets.has(h.id)}
+            scale={holdScale}
             onClick={() => onHoldClick(h)}
             reducedMotion={reducedMotion}
           />
@@ -140,7 +147,7 @@ export default function ClimbWall({
         className="pointer-events-none absolute z-30"
         style={{ left: avatarLeft, bottom: avatarBottom, x: "-50%", y: "50%" }}
       >
-        <Climber avatar={avatar} facing={facing} />
+        <Climber avatar={avatar} facing={facing} scale={avatarScale} />
       </motion.div>
     </div>
   );

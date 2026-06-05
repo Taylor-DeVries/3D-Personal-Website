@@ -204,7 +204,7 @@ export default function ClimbExperience() {
   }, []);
 
   return (
-    <div className="fixed inset-0 overflow-hidden bg-[#241f2e] font-sans text-white">
+    <div className="fixed inset-0 touch-manipulation overflow-hidden bg-[#241f2e] font-sans text-white">
       <SkylineBackground climbMV={avatarY} reducedMotion={reducedMotion} />
 
       <ClimbWall

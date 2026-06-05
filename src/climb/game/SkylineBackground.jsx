@@ -19,24 +19,25 @@ const ZONES = [
 ];
 
 export default function SkylineBackground({ climbMV, reducedMotion }) {
+  const lowPower = (typeof window !== "undefined" && window.innerWidth < 640) || reducedMotion;
   const stars = useMemo(
     () =>
-      Array.from({ length: 46 }, (_, i) => ({
+      Array.from({ length: lowPower ? 22 : 46 }, (_, i) => ({
         id: i,
         left: Math.random() * 100,
         top: Math.random() * 55,
         size: 1 + Math.random() * 2.2,
         delay: Math.random() * 3,
       })),
-    []
+    [lowPower]
   );
   const birds = useMemo(
-    () => Array.from({ length: 5 }, (_, i) => ({ id: i, top: 16 + Math.random() * 30, delay: i * 1.7, dur: 18 + Math.random() * 10 })),
-    []
+    () => Array.from({ length: lowPower ? 2 : 5 }, (_, i) => ({ id: i, top: 16 + Math.random() * 30, delay: i * 1.7, dur: 18 + Math.random() * 10 })),
+    [lowPower]
   );
   const clouds = useMemo(
-    () => Array.from({ length: 5 }, (_, i) => ({ id: i, top: 20 + i * 11, left: (i * 26) % 90, scale: 0.7 + Math.random() * 0.8, dur: 26 + Math.random() * 18 })),
-    []
+    () => Array.from({ length: lowPower ? 3 : 5 }, (_, i) => ({ id: i, top: 20 + i * 11, left: (i * 26) % 90, scale: 0.7 + Math.random() * 0.8, dur: 26 + Math.random() * 18 })),
+    [lowPower]
   );
 
   const sunY = useTransform(climbMV, [0, 0.85, 1], ["82%", "16%", "10%"]);

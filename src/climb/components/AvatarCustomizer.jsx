@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { FaTimes } from "react-icons/fa";
 import Climber from "../game/Climber";
-import { SUIT_COLORS, HELMET_COLORS, FACES } from "../data/avatar";
+import { SUIT_COLORS, HELMET_COLORS } from "../data/avatar";
 
 function Swatch({ color, active, onClick, label }) {
   return (
@@ -72,25 +72,6 @@ export default function AvatarCustomizer({ open, avatar, update, onClose }) {
                     <Swatch key={c} color={c} active={avatar.helmet === c} onClick={() => update({ helmet: c })} label={`Helmet ${c}`} />
                   ))}
                 </Row>
-                <div>
-                  <p className="mb-1.5 text-xs font-bold uppercase tracking-wide text-gray-400">Face</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {FACES.map((f) => (
-                      <button
-                        key={f}
-                        type="button"
-                        onClick={() => update({ face: f })}
-                        aria-label={`Face ${f}`}
-                        aria-pressed={avatar.face === f}
-                        className={`flex h-8 w-8 items-center justify-center rounded-lg text-lg transition ${
-                          avatar.face === f ? "bg-purple-500/20 ring-2 ring-purple-400" : "hover:bg-black/5 dark:hover:bg-white/10"
-                        }`}
-                      >
-                        {f}
-                      </button>
-                    ))}
-                  </div>
-                </div>
                 <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-200">
                   <input
                     type="checkbox"

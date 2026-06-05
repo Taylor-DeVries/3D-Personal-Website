@@ -28,12 +28,12 @@ export default function SecretsJournal({ open, facts, onClose }) {
             transition={{ type: "spring", stiffness: 260, damping: 24 }}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between bg-gradient-to-r from-fuchsia-500/20 to-purple-500/10 p-4">
+            <div className="flex items-center justify-between bg-gradient-to-r from-fuchsia-500/20 to-purple-500/10 p-3 sm:p-4">
               <div>
-                <h2 className="flex items-center gap-2 text-lg font-bold text-gray-800 dark:text-white">
+                <h2 className="flex items-center gap-2 text-base font-bold text-gray-800 dark:text-white sm:text-lg">
                   🔮 Secret fun facts
                 </h2>
-                <p className="text-xs text-gray-500 dark:text-gray-300">
+                <p className="text-[11px] text-gray-500 dark:text-gray-300 sm:text-xs">
                   {found}/{facts.length} uncovered — find 🔮 holds on side routes
                 </p>
               </div>
@@ -41,23 +41,23 @@ export default function SecretsJournal({ open, facts, onClose }) {
                 type="button"
                 onClick={onClose}
                 aria-label="Close"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-black/10 text-gray-600 transition hover:bg-black/20 dark:bg-white/10 dark:text-gray-200"
+                className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-black/10 text-gray-600 transition hover:bg-black/20 dark:bg-white/10 dark:text-gray-200 sm:h-9 sm:w-9"
               >
                 <FaTimes />
               </button>
             </div>
 
-            <div className="max-h-[60vh] space-y-2 overflow-y-auto p-4">
+            <div className="max-h-[60vh] space-y-2 overflow-y-auto p-3 sm:p-4">
               {facts.map((f, i) => (
                 <div
                   key={i}
-                  className={`flex items-start gap-3 rounded-2xl p-3 text-sm ${
+                  className={`flex items-start gap-2.5 rounded-2xl p-2.5 text-xs sm:gap-3 sm:p-3 sm:text-sm ${
                     f.found
                       ? "bg-fuchsia-50 text-gray-700 dark:bg-white/10 dark:text-gray-100"
                       : "bg-gray-100 text-gray-400 dark:bg-white/5 dark:text-gray-500"
                   }`}
                 >
-                  <span className="mt-0.5 flex-none text-base">{f.found ? "🔮" : <FaLock />}</span>
+                  <span className="mt-0.5 flex-none text-sm sm:text-base">{f.found ? "🔮" : <FaLock />}</span>
                   <span>{f.found ? f.text : "Locked — keep climbing to discover this one."}</span>
                 </div>
               ))}

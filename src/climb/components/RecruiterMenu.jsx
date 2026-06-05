@@ -16,7 +16,7 @@ export default function RecruiterMenu({ checkpoints, reached, onJump, onSummit }
         aria-expanded={open}
         className="flex items-center gap-2 rounded-full bg-white/85 px-4 py-2 text-sm font-semibold text-purple-700 shadow-lg backdrop-blur transition hover:bg-white dark:bg-[#332a47]/85 dark:text-purple-200 dark:hover:bg-[#332a47]"
       >
-        <FaCompass className="text-amber-500" />  shortcuts
+        <FaCompass className="text-amber-500" /> <span className="hidden sm:inline">Shortcuts</span>
         <FaChevronDown className={`transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
 

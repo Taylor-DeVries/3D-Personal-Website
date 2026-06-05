@@ -116,8 +116,8 @@ export default function HUD({
         </div>
       </div>
 
-      {/* Directional D-pad */}
-      <div className="pointer-events-none absolute bottom-5 right-4 z-30 select-none sm:bottom-6">
+      {/* Directional D-pad (desktop / large screens only — mobile taps holds) */}
+      <div className="pointer-events-none absolute bottom-5 right-4 z-30 hidden select-none sm:bottom-6 sm:block">
         <div className="grid grid-cols-3 grid-rows-3 gap-1.5">
           <span />
           <PadBtn label="Climb up" onPress={() => onMove("up")}>
@@ -137,6 +137,13 @@ export default function HUD({
           </PadBtn>
           <span />
         </div>
+      </div>
+
+      {/* Mobile tap hint */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-4 z-30 flex justify-center sm:hidden">
+        <span className="rounded-full bg-black/45 px-4 py-1.5 text-xs font-medium text-white/90 backdrop-blur">
+          👆 Tap a glowing hold to climb
+        </span>
       </div>
     </>
   );
