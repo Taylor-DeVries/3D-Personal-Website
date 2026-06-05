@@ -70,11 +70,13 @@ export default function ClimbWall({
 
   return (
     <div className="absolute inset-0 overflow-hidden" style={{ perspective: 1500 }}>
-      {/* The scrolling cliff face */}
+      {/* The scrolling cliff face. Height is in px (derived from the same vh
+          value as the camera/avatar) so holds stay perfectly aligned with the
+          climber — CSS `vh` and window.innerHeight differ on mobile browsers. */}
       <motion.div
         className="absolute inset-x-0 bottom-0"
         style={{
-          height: `${WORLD_VH}vh`,
+          height: `${worldPx}px`,
           y: wallY,
           backgroundColor: "#574f63",
           backgroundImage:
