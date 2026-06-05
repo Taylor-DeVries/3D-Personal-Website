@@ -107,7 +107,6 @@ export default function Projects() {
   const isDragging = useRef(false);
   const dragStartX = useRef(0);
   const scrollStartX = useRef(0);
-  const autoScrollInterval = useRef(null);
   const autoScrollPaused = useRef(false);
   const AUTO_SCROLL_SPEED = 1.2; // px per frame
   const AUTO_SCROLL_PAUSE_DURATION = 2000; // ms
@@ -202,17 +201,6 @@ export default function Projects() {
       container.removeEventListener("touchend", onTouchEnd);
     };
   }, []);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
 
   const projectVariants = {
     hidden: { scale: 0, opacity: 0 },

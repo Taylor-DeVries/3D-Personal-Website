@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { FaMountain } from "react-icons/fa";
 
 function LilacTorus() {
   const [color, setColor] = useState("#BC86F7");
@@ -85,7 +87,7 @@ export default function Home() {
         whileTap={{ scale: 0.95 }}
       >
         <img
-          src="/images/Taylor_Headshot.jpg"
+          src="/images/Taylor_Headshot.png"
           alt="Taylor's Headshot"
           className="w-full h-full object-cover"
         />
@@ -103,23 +105,39 @@ export default function Home() {
         variants={itemVariants}
         whileHover={{ scale: 1.02 }}
       >
-        A passionate software engineer focused on simplifying complex problems
-        through intuitive and innovative technology.
+        A software engineer and optimizer who loves organizing chaos, shipping
+        fast, and building more with AI.
       </motion.p>
 
       {/* Learn About Me Button */}
-      <motion.button
-        className="px-6 py-3 bg-purple-400 text-white dark:text-[#333] font-semibold rounded-lg shadow-md hover:bg-purple-500 transition duration-300 z-10"
-        variants={itemVariants}
-        whileHover={{ 
-          scale: 1.05,
-          boxShadow: "0 0 20px rgba(147, 51, 234, 0.5)"
-        }}
-        whileTap={{ scale: 0.95 }}
-        onClick={() => document.getElementById('about-section')?.scrollIntoView({ behavior: 'smooth' })}
-      >
-        Learn About Me
-      </motion.button>
+      <motion.div className="flex flex-col sm:flex-row items-center gap-3 z-10" variants={itemVariants}>
+
+        {/* Play Interactive Climb Button */}
+        <Link to="/climb">
+          <motion.div
+            className="group relative flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-white shadow-md overflow-hidden cursor-pointer"
+            style={{
+              background: "linear-gradient(110deg, #9B4DCA, #BC86F7 45%, #BF40BF)",
+              backgroundSize: "200% 100%",
+            }}
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 0 28px rgba(188, 134, 247, 0.7)",
+              backgroundPosition: "100% 0%",
+            }}
+            whileTap={{ scale: 0.95 }}
+            animate={{ backgroundPosition: ["0% 0%", "100% 0%", "0% 0%"] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <FaMountain className="text-lg" />
+            <span>Play Interactive Climb</span>
+            <span className="absolute -right-1 -top-1 flex h-3 w-3">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-yellow-300 opacity-75" />
+              <span className="relative inline-flex h-3 w-3 rounded-full bg-yellow-400" />
+            </span>
+          </motion.div>
+        </Link>
+      </motion.div>
 
       {/* 3D Torus background */}
       <motion.div 

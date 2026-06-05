@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, MeshDistortMaterial } from "@react-three/drei";
-import { FaReact, FaAws, FaNodeJs, FaAngular } from "react-icons/fa"; 
+import { FaReact, FaAws, FaNodeJs, FaAngular, FaRobot } from "react-icons/fa"; 
 import {
   SiTailwindcss,
   SiTypescript,
@@ -9,6 +9,8 @@ import {
   SiNextdotjs,
   SiExpress,
   SiPython,
+  SiRuby,
+  SiRubyonrails,
 } from "react-icons/si"; 
 import { useState, useEffect } from "react";
 
@@ -78,6 +80,12 @@ export default function About() {
       icon: <FaNodeJs className="text-green-500 w-8 h-8" />,
     },
     { name: "Next.js", icon: <SiNextdotjs className="text-black w-8 h-8" /> },
+    { name: "Ruby", icon: <SiRuby className="text-red-500 w-8 h-8" /> },
+    {
+      name: "Rails",
+      icon: <SiRubyonrails className="text-red-600 w-8 h-8" />,
+    },
+    { name: "Claude", icon: <FaRobot className="text-fuchsia-500 w-8 h-8" /> },
     {
       name: "Express.js",
       icon: <SiExpress className="text-gray-500 w-8 h-8" />,
@@ -108,11 +116,13 @@ export default function About() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        I'm a Software Engineering student at the University of Waterloo with a
-        passion for building impactful technology. I have hands-on experience in
-        full-stack and mobile development, working with a variety of technologies to create
-        seamless user experiences and powerful back-end solutions. I'm always
-        looking for opportunities to learn and grow.
+        I'm a Software Engineering student at the University of Waterloo and an
+        optimizer at heart — I love organizing chaos, shipping things fast, and
+        finding a better way to do almost everything. Across internships and
+        co-founding a startup, I've leaned on my technical background in
+        full-stack and mobile development to solve real problems, and lately I'm
+        all-in on agentic AI workflows (Claude Code, Pi, Cursor) to build and
+        ship even faster.
       </motion.p>
 
       {/* Buttons */}

@@ -38,7 +38,7 @@ const experiences = [
     ],
   },
   {
-    title: "Full Stack Developer Co-op",
+    title: "Full Stack Developer Intern II",
     company: "Rocket",
     // description:
     //   "Developing and optimizing core features for Rocket.com ensuring a seamless user experience across the platform. Collaborating with cross-functional Agile teams to gather requirements, analyze technical challenges, and implement scalable solutions that meet business objectives.",
@@ -73,7 +73,7 @@ const experiences = [
     ],
   },
   {
-    title: "Full Stack Developer Co-op",
+    title: "Full Stack Developer Intern",
     company: "Rocket",
     // description:
     //   "Developed and thoroughly tested full stack web applications while writing 97% coverage unit and e2e tests with Cypress. Wrote robust and maintainable code while adhering to best practices, contributing to the team's goal of maintaining high code quality and reliability",

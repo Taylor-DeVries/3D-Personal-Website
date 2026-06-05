@@ -1,0 +1,315 @@
+// Checkpoint content for the interactive climb.
+//
+// NOTE FOR TAYLOR: The factual bits (companies, projects, links, university)
+// are pulled from your existing portfolio. The narrative copy (early-interest
+// story, university lessons, personal facts, fun facts) is tasteful placeholder
+// text — tweak the strings below to make them truly yours.
+//
+// `y` = height up the wall (0 = base, 1 = summit). `lane` = 0|1|2 (left/mid/right).
+
+export const baseCamp = {
+  id: "base-camp",
+  name: "Taylor DeVries",
+  tagline: "Software Engineer · University of Waterloo",
+  summary:
+    "Welcome to base camp. This is my story told as a climb — every glowing hold is a chapter in how I got here.",
+  howTo: [
+    { emoji: "🧗", text: "Grapple between holds with WASD / arrow keys, the on-screen D-pad, or by tapping a glowing hold." },
+    { emoji: "💎", text: "Collect gems hidden on side routes — stray off the main path to grab them all." },
+    { emoji: "🔮", text: "Find hidden mystery holds to unlock secret fun facts about me." },
+    { emoji: "🏔️", text: "Reach each checkpoint to unlock a piece of my journey, then summit for your score." },
+  ],
+  image: "/images/Taylor_Headshot.png",
+};
+
+export const checkpoints = [
+  {
+    id: "early-interest",
+    index: 1,
+    kicker: "Checkpoint 1",
+    title: "From Code to Coordinating Chaos",
+    y: 0.1,
+    lane: 0,
+    icon: "⚡",
+    holdColor: "#FFD166",
+    badge: { emoji: "🧩", name: "The Optimizer", blurb: "Obsessed with organizing chaos and shipping fast." },
+    type: "story",
+    body: [
+      "It started with code. As a kid I tore things apart to see how they worked, then realized software let me build them back up, faster and bigger. That spark turned a hobby into a career.",
+      "But across my internships and co-founding FinBud, I noticed what really lights me up isn't only writing code, it's organizing chaos, shipping things FAST, and finding a better way to do almost everything. I'm an optimizer at heart, always hunting for the smarter path.",
+      "My technical background is the foundation. I've leaned on code to solve real problems. What I'm steering toward now is the people side of building: coordinating teams, communicating clearly, and driving projects across the line.",
+      "That's the direction I'm climbing: growing into a Technical Program Manager who turns ambitious, messy ideas into shipped reality, and has fun doing it.",
+    ],
+  },
+  {
+    id: "university",
+    index: 2,
+    kicker: "Checkpoint 2",
+    title: "University Journey",
+    y: 0.19,
+    lane: 2,
+    icon: "🎓",
+    holdColor: "#2EC4F1",
+    badge: { emoji: "📚", name: "Scholar Hold", blurb: "Software Engineering at the University of Waterloo." },
+    type: "university",
+    school: "University of Waterloo",
+    program: "Bachelor of Software Engineering",
+    timeline: [
+      { when: "Year 1", what: "Foundations", detail: "programming principles and my first hardware/AR project." },
+      { when: "Year 2", what: "Going full-stack", detail: "Data structures, algorithms, and shipping real features on co-op terms." },
+      { when: "Year 3+", what: "Depth & scale", detail: "Systems, distributed thinking, and building products end-to-end with agentic tools." },
+    ],
+    courses: ["Data Structures & Algorithms", "Software Design", "Systems Design", "Operating Systems", "Databases", "UI/UX", "ML", "Testing and QA"],
+    lessons:
+      "Waterloo's co-op meant alternating study and industry. I learned to learn fast, ship under real constraints, and using as many agentic tools as possible",
+    photos: ["/images/gallery/waterloo.png", "/images/gallery/velocity.png"],
+  },
+  {
+    id: "first-internship",
+    index: 3,
+    kicker: "Checkpoint 3",
+    title: "First Work Experience",
+    y: 0.28,
+    lane: 1,
+    icon: "💼",
+    holdColor: "#10B981",
+    badge: { emoji: "🪢", name: "First Rope", blurb: "Shipped production code on a real engineering team." },
+    type: "experience",
+    experiences: [
+      {
+        company: "Rocket",
+        role: "Full Stack Engineering Intern",
+        when: "May 2024 – Aug 2024",
+        image: "/images/experience/rocket.png",
+        points: [
+          "Developed and tested full-stack web apps for Rocket.com.",
+          "Wrote 97% coverage unit and e2e tests with Cypress.",
+          "Shipped maintainable code following team best practices.",
+        ],
+        tech: ["Angular", "TypeScript", "Node.js", "Express.js", "Cypress", "Figma"],
+      },
+      {
+        company: "Rocket",
+        role: "Full Stack Engineering Intern II (Returning)",
+        when: "Jan 2025 – Apr 2025",
+        image: "/images/experience/rocket.png",
+        points: [
+          "Built and optimized core features for a seamless user experience.",
+          "Collaborated with cross-functional Agile teams on scalable solutions.",
+          "Used CircleCI and Dynatrace for delivery and observability.",
+        ],
+        tech: ["Angular", "React", "TypeScript", "Cursor", "TPM", "Node.js", "CircleCI", "Dynatrace"],
+      },
+    ],
+  },
+  {
+    id: "vivid-seats",
+    index: 4,
+    kicker: "Checkpoint 4",
+    title: "Mobile Engineering @ Vivid Seats",
+    y: 0.37,
+    lane: 0,
+    icon: "📱",
+    holdColor: "#FF8A5B",
+    badge: { emoji: "📲", name: "Mobile Mantle", blurb: "Built customer-facing mobile features at scale." },
+    type: "experience",
+    experiences: [
+      {
+        company: "Vivid Seats",
+        role: "Mobile Software Engineering Intern",
+        when: "Sept 2025 – Dec 2025",
+        image: "/images/experience/vividSeats.png",
+        points: [
+          "Built customer-facing features in React Native for iOS and Android.",
+          "Partnered with product and design to refine flows and UI, aligning with accessibility best practices.",
+          "Optimized performance (rendering, network, start-up time) using Xcode and Android profilers plus structured logging and analytics.",
+        ],
+        tech: ["React Native", "TypeScript", "Claude Code", "iOS", "Android", "Xcode", "Expo"],
+      },
+    ],
+  },
+  {
+    id: "shopify",
+    index: 5,
+    kicker: "Checkpoint 5",
+    title: "Engineering @ Shopify",
+    y: 0.46,
+    lane: 2,
+    icon: "🛍️",
+    holdColor: "#06D6A0",
+    badge: { emoji: "🤖", name: "Agentic Ascent", blurb: "Shipping with Ruby on Rails and AI-assisted workflows." },
+    type: "experience",
+    experiences: [
+      {
+        company: "Shopify",
+        role: "Software Engineering Intern",
+        when: "May 2026 – Present",
+        image: "/images/experience/shopify.png",
+        points: [
+          "Working on the Commerce Trust & Integrity team to keep the platform safe and trustworthy.",
+          "Building backend features in Ruby on Rails with GraphQL APIs.",
+          "Leaning into agentic developer workflows, Claude Code and Pi, and shipping with Graphite stacked PRs.",
+        ],
+        tech: ["Ruby", "Rails", "GraphQL", "Graphite", "Pi", "Claude Code"],
+      },
+    ],
+  },
+  {
+    id: "startup",
+    index: 6,
+    kicker: "Checkpoint 6",
+    title: "Startup & Entrepreneurship",
+    y: 0.56,
+    lane: 1,
+    icon: "🚀",
+    holdColor: "#FF5D8F",
+    badge: { emoji: "🚀", name: "Founder Crux", blurb: "Co-founded FinBud and led engineering." },
+    type: "startup",
+    name: "FinBud",
+    role: "Co-Founder & Lead Software Engineer",
+    when: "July 2024 – Present",
+    link: "https://finbud.ca/",
+    image: "/images/experience/finLogo.png",
+    pitch:
+      "FinBud simplifies personal finance for young people with a friendly, step-by-step guide through their financial journey.",
+    validation: [
+      "Talked to real users to find the sharpest pain point.",
+      "Built a decision-tree model to deliver tailored advice.",
+      "Shipped an MVP, then iterated on feedback.",
+      "Directed a team of 4 with CI/CD on AWS Amplify.",
+    ],
+    learned:
+      "Building a company is its own crux: you have to validate before you build, lead a team without all the answers, and keep climbing when the route isn't obvious.",
+    tech: ["React", "Next.js", "C#", "DynamoDB", "Auth0", "AWS", "Docker", "Tailwind"],
+    quiz: {
+      question: "What's the smartest first move for a new startup idea?",
+      options: [
+        { text: "Build the full product in secret", correct: false },
+        { text: "Talk to real users and validate the problem", correct: true },
+        { text: "Raise money before anything else", correct: false },
+      ],
+      correctNote: "Exactly — validate the problem before you build the solution.",
+      wrongNote: "Tempting, but talking to users first saves months of building the wrong thing.",
+    },
+  },
+  {
+    id: "projects",
+    index: 7,
+    kicker: "Checkpoint 7",
+    title: "Major Projects",
+    y: 0.66,
+    lane: 0,
+    icon: "🧗",
+    holdColor: "#7C5CFC",
+    badge: { emoji: "🗺️", name: "Route Setter", blurb: "Each project is its own climbing route." },
+    type: "projects",
+    projects: [
+      {
+        title: "FinBud",
+        blurb: "A platform that simplifies personal finance for young people.",
+        image: "/images/projects/finbud.png",
+        impact: "Co-founded & led engineering",
+        tech: ["React", "Next.js", "C#", "AWS", "Docker"],
+        links: [{ label: "Live", url: "https://finbud.ca/" }],
+      },
+      {
+        title: "F1 Telemetry Dashboard",
+        blurb: "Real-time F1 telemetry: speed, RPM, throttle, brake and track mapping.",
+        image: "/images/projects/f1-dashboard.png",
+        impact: "Real-time data viz",
+        tech: ["React", "TypeScript", "D3.js", "Chart.js"],
+        links: [{ label: "Live", url: "https://f1-telemetry-dashboard.vercel.app/" }],
+      },
+      {
+        title: "Plant Pal",
+        blurb: "A cozy virtual desk plant that grows as you focus and work.",
+        image: "/images/projects/plant.png",
+        impact: "Calm productivity",
+        tech: ["React", "TypeScript", "Vite", "Tailwind"],
+        links: [{ label: "Live", url: "https://plantpal-relax.vercel.app/" }],
+      },
+      {
+        title: "Focus Cat",
+        blurb: "A minimalist Chrome extension for study/break modes with a cat companion.",
+        image: "/images/projects/focus.png",
+        impact: "Chrome extension",
+        tech: ["React", "TypeScript", "Tailwind"],
+        links: [{ label: "GitHub", url: "https://github.com/Taylor-DeVries/focus-cat" }],
+      },
+      {
+        title: "Flappy Pal",
+        blurb: "A cute, pastel Flappy Bird–style web game — tap or press space to flap through pixel pipes.",
+        image: "/images/projects/flappy.png",
+        impact: "Pastel arcade game",
+        tech: ["React", "TypeScript", "Tailwind", "Vercel"],
+        links: [{ label: "Live", url: "https://flappy-pal.vercel.app/" }],
+      },
+      {
+        title: "AR Headset",
+        blurb: "An AR headset that shows resumes beside applicants using facial recognition.",
+        image: "/images/projects/AR.png",
+        impact: "SE101 hardware build",
+        tech: ["Unity", "C#", "AR Foundation", "Fusion 360"],
+        links: [{ label: "Demo", url: "https://www.youtube.com/watch?v=sjttNGrEmtk" }],
+      },
+    ],
+  },
+  {
+    id: "skills",
+    index: 8,
+    kicker: "Checkpoint 8",
+    title: "Skills Wall",
+    y: 0.76,
+    lane: 2,
+    icon: "🧱",
+    holdColor: "#2EC4F1",
+    badge: { emoji: "💪", name: "Strong Grip", blurb: "A wall of tools I climb with daily." },
+    type: "skills",
+    intro: "Every hold here is a skill. Tap one to see my level, experience and where I've used it.",
+  },
+  {
+    id: "personal",
+    index: 9,
+    kicker: "Checkpoint 9",
+    title: "Personal Side",
+    y: 0.87,
+    lane: 1,
+    icon: "🏔️",
+    holdColor: "#FF5D8F",
+    badge: { emoji: "❤️", name: "Human Hold", blurb: "The person behind the code." },
+    type: "personal",
+    intro: "Off the keyboard, here's what keeps me balanced.",
+    facts: [
+      { emoji: "🧗", title: "Rock climbing", text: "Problem-solving on a wall mirrors problem-solving in code." },
+      { emoji: "✈️", title: "Travel", text: "Exploring new cities, from Rome to Icelandic waterfalls and Hawaii beaches and everything between." },
+      { emoji: "🐱", title: "Cat person", text: "Best debugging partner I could ask for." },
+      { emoji: "🏃‍♀️", title: "Running", text: "A way for me to reset my brain after or before a good lock in session." },
+    ],
+    photos: ["/images/gallery/rome.png", "/images/gallery/waterfall.png", "/images/gallery/city.png", "/images/gallery/cat.png"],
+    traits: ["Curious", "Persistent", "Collaborative", "Calm under pressure"],
+  },
+];
+
+// Hidden fun facts revealed by finding mystery (🔮) holds off the main route.
+export const funFacts = [
+  "I got into climbing and coding for the same reason: both are just puzzles you solve with your hands.",
+  "I have traveled to over 10 countries! Can't wait to make that more.",
+  "I love running! During exam season I will run 10km+ to help me lock in.",
+  "I love diving deep into agentic coding! Anytime I see a new AI tool I will build something new to try it out.",
+  "I have a cat named Momo. She is a grey tabby and such a sweetie pie.",
+  "I think the best engineers are great at communication.",
+];
+
+export const summit = {
+  id: "summit",
+  title: "You reached the summit!",
+  message: "Thanks for climbing through my story.",
+  links: {
+    linkedin: "https://www.linkedin.com/in/taylor-r-devries/",
+    github: "https://github.com/Taylor-DeVries",
+    email: "mailto:t2devrie@uwaterloo.ca",
+  },
+  recruiterNote: "Looking for someone who ships, learns fast, and sweats the details? Let's talk.",
+};
+
+export const TOTAL_CHECKPOINTS = checkpoints.length;
