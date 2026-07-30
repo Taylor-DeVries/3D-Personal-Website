@@ -105,8 +105,8 @@ export default function Home() {
         variants={itemVariants}
         whileHover={{ scale: 1.02 }}
       >
-        A software engineer and optimizer who loves organizing chaos, shipping
-        fast, and building more with AI.
+        A software engineer with a product mindset who loves organizing chaos, building more with AI, 
+        and has deep technical roots, hands-on product experience, and eager to grow into PM roles.
       </motion.p>
 
       {/* Learn About Me Button */}

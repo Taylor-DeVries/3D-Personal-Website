@@ -55,7 +55,7 @@ const experiences = [
     ],
   },
   {
-    title: "Co-Founder, Lead Software Engineer",
+    title: "Co-Founder, Technical Product Lead",
     company: "FinBud",
     // description:
     //   "Created a user-centric decision tree model to deliver tailored financial advice. Directing a team of 4 developers in creating a web application using React, Next.js, Docker, and AWS. Implemented a CI/CD pipeline in AWS and hosted the application with AWS Amplify",

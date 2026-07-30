@@ -10,9 +10,9 @@
 export const baseCamp = {
   id: "base-camp",
   name: "Taylor DeVries",
-  tagline: "Software Engineer · University of Waterloo",
+  tagline: "Software Engineer → Product · University of Waterloo",
   summary:
-    "Welcome to base camp. This is my story told as a climb — every glowing hold is a chapter in how I got here.",
+    "Welcome to base camp. I'm a software engineer with deep technical roots and growing product experience — every hold on this wall is a chapter in that journey.",
   howTo: [
     { emoji: "🧗", text: "Grapple between holds with WASD / arrow keys, the on-screen D-pad, or by tapping a glowing hold." },
     { emoji: "💎", text: "Collect gems hidden on side routes — stray off the main path to grab them all." },
@@ -27,18 +27,18 @@ export const checkpoints = [
     id: "early-interest",
     index: 1,
     kicker: "Checkpoint 1",
-    title: "From Code to Coordinating Chaos",
+    title: "From Code to Product",
     y: 0.1,
     lane: 0,
     icon: "⚡",
     holdColor: "#FFD166",
-    badge: { emoji: "🧩", name: "The Optimizer", blurb: "Obsessed with organizing chaos and shipping fast." },
+    badge: { emoji: "🧩", name: "Product Instinct", blurb: "Technical depth with a growing product mindset." },
     type: "story",
     body: [
       "It started with code. As a kid I tore things apart to see how they worked, then realized software let me build them back up, faster and bigger. That spark turned a hobby into a career.",
-      "But across my internships and co-founding FinBud, I noticed what really lights me up isn't only writing code, it's organizing chaos, shipping things FAST, and finding a better way to do almost everything. I'm an optimizer at heart, always hunting for the smarter path.",
-      "My technical background is the foundation. I've leaned on code to solve real problems. What I'm steering toward now is the people side of building: coordinating teams, communicating clearly, and driving projects across the line.",
-      "That's the direction I'm climbing: growing into a Technical Program Manager who turns ambitious, messy ideas into shipped reality, and has fun doing it.",
+      "Across internships at Rocket, Vivid Seats, and Shopify, I shipped production features — but the work I loved most was sitting with product managers, translating requirements, and aligning engineering with what users actually needed.",
+      "Co-founding FinBud pushed me further into product: 100+ user interviews, roadmap ownership, backlog prioritization, and leading a cross-functional team from discovery through launch. My technical background stayed the foundation; the product side became the pull.",
+      "That's the direction I'm climbing: a Product Manager role where I can turn ambitious, messy ideas into shipped reality — with the engineering fluency to partner deeply with technical teams.",
     ],
   },
   {
@@ -57,7 +57,7 @@ export const checkpoints = [
     timeline: [
       { when: "Year 1", what: "Foundations", detail: "programming principles and my first hardware/AR project." },
       { when: "Year 2", what: "Going full-stack", detail: "Data structures, algorithms, and shipping real features on co-op terms." },
-      { when: "Year 3+", what: "Depth & scale", detail: "Systems, distributed thinking, and building products end-to-end with agentic tools." },
+      { when: "Year 3+", what: "Depth & scale", detail: "Product thinking, systems design, and building end-to-end with a PM lens." },
     ],
     courses: ["Data Structures & Algorithms", "Software Design", "Systems Design", "Operating Systems", "Databases", "UI/UX", "ML", "Testing and QA"],
     lessons:
@@ -163,10 +163,10 @@ export const checkpoints = [
     lane: 1,
     icon: "🚀",
     holdColor: "#FF5D8F",
-    badge: { emoji: "🚀", name: "Founder Crux", blurb: "Co-founded FinBud and led engineering." },
+    badge: { emoji: "🚀", name: "Founder Crux", blurb: "Co-founded FinBud and led product." },
     type: "startup",
     name: "FinBud",
-    role: "Co-Founder & Lead Software Engineer",
+    role: "Co-Founder, Technical Product Lead",
     when: "July 2024 – Present",
     link: "https://finbud.ca/",
     image: "/images/experience/finLogo.png",

@@ -116,13 +116,14 @@ export default function About() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        I'm a Software Engineering student at the University of Waterloo and an
-        optimizer at heart — I love organizing chaos, shipping things fast, and
-        finding a better way to do almost everything. Across internships and
-        co-founding a startup, I've leaned on my technical background in
-        full-stack and mobile development to solve real problems, and lately I'm
-        all-in on agentic AI workflows (Claude Code, Pi, Cursor) to build and
-        ship even faster.
+        I'm a Software Engineering student at the University of Waterloo with a
+        strong technical background in full-stack and mobile — from Shopify and
+        Vivid Seats to co-founding FinBud. I've worked closely with product
+        managers to turn business goals into shipped features, and at FinBud I
+        owned product strategy, user research, and roadmap from discovery
+        through launch. My engineering depth is the foundation; what I'm
+        climbing toward now is a Product Manager role where I can bridge
+        technical execution with user-focused strategy.
       </motion.p>
 
       {/* Buttons */}
