@@ -205,6 +205,14 @@ export const checkpoints = [
     type: "projects",
     projects: [
       {
+        title: "Taylor's Travel Diary",
+        blurb: "An interactive 3D globe with photo journals from 9 countries — spin, zoom, and click a pin.",
+        image: "/images/projects/travel-diary.png",
+        impact: "Vibe coded in ~1 hour",
+        tech: ["Claude", "React", "Vite", "react-globe.gl", "Vercel"],
+        links: [{ label: "Live", url: "https://tays-travel-diary.vercel.app/" }],
+      },
+      {
         title: "FinBud",
         blurb: "A platform that simplifies personal finance for young people.",
         image: "/images/projects/finbud.png",

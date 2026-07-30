@@ -3,6 +3,21 @@ import { useState, useRef, useEffect } from "react";
 
 const projects = [
   {
+    title: "Taylor's Travel Diary",
+    description:
+      "A personal travel diary showcasing 392 photos across 9 countries, with an interactive 3D globe you can spin, zoom, and click to explore country journals. Vibe coded in about an hour — a growing collection of people, places, and tiny moments from around the world.",
+    link: "https://tays-travel-diary.vercel.app/",
+    image: "/images/projects/travel-diary.png",
+    technologies: [
+      "Claude",
+      "React",
+      "Vite",
+      "react-globe.gl",
+      "Vercel Blob",
+      "Vercel",
+    ],
+  },
+  {
     title: "F1 Telemetry Dashboard",
     description:
       "A comprehensive Formula 1 telemetry dashboard featuring real-time data visualization, driver performance metrics, track mapping, and interactive telemetry analysis. Built with modern web technologies to provide an immersive F1 racing experience with live speed, RPM, throttle, and brake data visualization.",
