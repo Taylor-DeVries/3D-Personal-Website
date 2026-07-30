@@ -38,6 +38,19 @@ const experiences = [
     ],
   },
   {
+    title: "Financial Education Ambassador",
+    company: "Wealthsimple Foundation",
+    duration: "May 2025 - Dec 2025",
+    image: "/images/experience/wealthsimple.png",
+    technologies: [
+      "Content Strategy",
+      "Financial Literacy",
+      "Social Media",
+      "Engagement Analytics",
+      "Marketing Collaboration",
+    ],
+  },
+  {
     title: "Full Stack Developer Intern II",
     company: "Rocket",
     // description:
