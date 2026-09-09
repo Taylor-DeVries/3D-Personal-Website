@@ -8,7 +8,7 @@ const experiences = [
     title: "Software Engineering Intern",
     company: "Shopify",
     team: "Commerce Trust & Integrity",
-    duration: "May 2026 - Present",
+    duration: "May 2026 - August 2026",
     image: "/images/experience/shopify.png",
     technologies: [
       "Ruby",
@@ -72,7 +72,7 @@ const experiences = [
     company: "FinBud",
     // description:
     //   "Created a user-centric decision tree model to deliver tailored financial advice. Directing a team of 4 developers in creating a web application using React, Next.js, Docker, and AWS. Implemented a CI/CD pipeline in AWS and hosted the application with AWS Amplify",
-    duration: "July 2024 - Present",
+    duration: "July 2024 - April 2026",
     image: "/images/experience/finLogo.png",
     technologies: [
       "Product Management",
