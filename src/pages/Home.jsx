@@ -1,61 +1,90 @@
 import { motion } from "framer-motion";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaMountain } from "react-icons/fa";
 
-function LilacTorus() {
-  const [color, setColor] = useState("#BC86F7");
+// Hand-drawn SVG doodles
+const SparkleDoodle = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-amber">
+    <path
+      d="M12 2L13.5 8.5L20 10L13.5 11.5L12 18L10.5 11.5L4 10L10.5 8.5L12 2Z"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      fill="none"
+    />
+  </svg>
+);
 
-  const handleClick = () => {
-    const newColor = color === "#BC86F7" ? "#BF40BF" : "#BC86F7";
-    setColor(newColor);
-  };
+const ArrowDoodle = () => (
+  <svg width="60" height="30" viewBox="0 0 60 30" fill="none" className="text-emerald">
+    <path
+      d="M5 15C15 15 25 10 30 15C35 20 45 15 55 15"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      fill="none"
+    />
+    <path
+      d="M50 10L55 15L50 20"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      fill="none"
+    />
+  </svg>
+);
+
+const DownArrowDoodle = () => (
+  <svg width="34" height="42" viewBox="0 0 34 42" fill="none" className="text-emerald" aria-hidden="true">
+    <path
+      d="M17 3C16.5 13 18 23 17 34"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M9 27L17 36L25 27"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+// Draggable skill sticker component
+const SkillSticker = ({ skill, index }) => {
+  const [rotation] = useState(() => (Math.random() - 0.5) * 6);
+  const colors = [
+    "bg-white border-ink",
+    "bg-mint border-forest",
+    "bg-card border-emerald",
+    "bg-amber/10 border-amber",
+  ];
+  const color = colors[index % colors.length];
 
   return (
-    <mesh onClick={handleClick} rotation={[0, 0, Math.PI / 4]}>
-      <torusGeometry args={[1.5, 0.4, 16, 100]} />
-      <meshStandardMaterial color={color} metalness={0.5} roughness={0.3} />
-    </mesh>
+    <motion.div
+      whileHover={{ scale: 1.1, rotate: 0 }}
+      whileTap={{ scale: 0.95 }}
+      style={{ rotate: rotation }}
+      className={`${color} border-2 rounded-full px-4 py-2 shadow-[3px_3px_0px_#DCD7CD] font-mono text-sm`}
+    >
+      {skill}
+    </motion.div>
   );
-}
-
-function LilacKnot() {
-  const [scale, setScale] = useState(1);
-  const [rotation, setRotation] = useState([0, Math.PI / 4, Math.PI / 4]);
-
-  const handleClick = () => {
-    setScale(scale === 1 ? 1.25 : 1);
-    setRotation([Math.PI / 2, Math.PI / 2, Math.PI / 2]);
-  };
-
-  return (
-    <mesh onClick={handleClick} scale={scale} rotation={rotation}>
-      <torusKnotGeometry args={[1, 0.3, 100, 16]} />
-      <meshStandardMaterial color="#BC86F7" metalness={0.5} roughness={0.3} />
-    </mesh>
-  );
-}
+};
 
 export default function Home() {
-  const [animationState, setAnimationState] = useState(false);
-
-  const handleTorusClick = () => {
-    setAnimationState(!animationState);
-  };
-
-  const handleKnotClick = () => {
-    setAnimationState(!animationState);
-  };
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3
+        staggerChildren: 0.15,
+        delayChildren: 0.2
       }
     }
   };
@@ -73,100 +102,68 @@ export default function Home() {
   };
 
   return (
+    <>
     <motion.div 
-      className="relative min-h-screen flex flex-col items-center justify-center px-6 py-16 overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center px-6 py-16"
+      style={{ backgroundColor: "transparent" }}
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
-      {/* Headshot */}
+      {/* Headshot with washi tape */}
       <motion.div
-        className="relative lg:w-40 md:w-32 w-24 lg:h-40 md:h-32 h-24 rounded-full overflow-hidden shadow-lg border-4 border-purple-400 hover:scale-50 transition-transform duration-300 z-10"
+        className="relative mb-8"
         variants={itemVariants}
-        whileHover={{ scale: 1.05, rotate: 5 }}
-        whileTap={{ scale: 0.95 }}
       >
-        <img
-          src="/images/Taylor_Headshot.png"
-          alt="Taylor's Headshot"
-          className="w-full h-full object-cover"
-        />
+        {/* Washi tape accent */}
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-6 bg-mint/80 border border-forest/10 -rotate-2 shadow-sm z-10" />
+        
+        <motion.div
+          className="relative w-48 h-64 md:w-64 md:h-80 rounded-sm overflow-hidden shadow-[4px_4px_0px_#DCD7CD] border-2 border-stone bg-white p-2"
+          whileHover={{ 
+            scale: 1.02, 
+            rotate: 0.5,
+            boxShadow: "6px 6px 0px #1E4631"
+          }}
+        >
+          <img
+            src="/images/Taylor_Headshot.png"
+            alt="Taylor's Headshot"
+            className="h-full w-full rounded-sm object-cover"
+            width="3144"
+            height="4192"
+            decoding="async"
+            fetchPriority="high"
+          />
+        </motion.div>
       </motion.div>
 
+      {/* Title with serif font */}
       <motion.h1
-        className="lg:text-5xl md:text-4xl text-2xl font-bold text-[#333] dark:text-[#f5f4f2] mb-4 text-center"
+        className="text-4xl md:text-5xl font-serif font-bold text-ink mb-4 text-center tracking-tight"
         variants={itemVariants}
-        whileHover={{ scale: 1.02 }}
       >
         Hi, I'm Taylor
       </motion.h1>
+      
       <motion.p
-        className="lg:text-xl md:text-lg text-md text-gray-600 dark:text-[#f5f4f2] max-w-xl text-center mb-8 z-10"
+        className="text-xl text-muted max-w-xl text-center mb-12 z-10 font-sans"
         variants={itemVariants}
-        whileHover={{ scale: 1.02 }}
       >
         a Software Engineering student at the University of Waterloo
-        </motion.p>
-
-      {/* Learn About Me Button */}
-      <motion.div className="flex flex-col sm:flex-row items-center gap-3 z-10" variants={itemVariants}>
-
-        {/* Play Interactive Climb Button */}
-        <Link to="/climb">
-          <motion.div
-            className="group relative flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-white shadow-md overflow-hidden cursor-pointer"
-            style={{
-              background: "linear-gradient(110deg, #9B4DCA, #BC86F7 45%, #BF40BF)",
-              backgroundSize: "200% 100%",
-            }}
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0 0 28px rgba(188, 134, 247, 0.7)",
-              backgroundPosition: "100% 0%",
-            }}
-            whileTap={{ scale: 0.95 }}
-            animate={{ backgroundPosition: ["0% 0%", "100% 0%", "0% 0%"] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <FaMountain className="text-lg" />
-            <span>Play Interactive Climb</span>
-            <span className="absolute -right-1 -top-1 flex h-3 w-3">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-yellow-300 opacity-75" />
-              <span className="relative inline-flex h-3 w-3 rounded-full bg-yellow-400" />
-            </span>
-          </motion.div>
-        </Link>
-      </motion.div>
-
-      {/* 3D Torus background */}
-      <motion.div 
-        className="absolute bottom-4 sm:bottom-10 left-10 w-64 h-64 opacity-80 dark:opacity-100 z-0"
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, delay: 0.5 }}
+      </motion.p>
+      <motion.div
+        className="mt-8 flex flex-col items-center gap-2"
+        animate={{ y: [0, 5, 0] }}
+        transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
       >
-        <Canvas camera={{ position: [0, 0, 4] }}>
-          <ambientLight intensity={0.4} />
-          <directionalLight position={[0, 0, 5]} />
-          <LilacTorus onClick={handleTorusClick} />
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={3} />
-        </Canvas>
-      </motion.div>
-
-      {/* 3D Knot at the top right */}
-      <motion.div 
-        className="absolute top-10 right-10 w-64 h-64 opacity-60 dark:opacity-100 z-0"
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, delay: 0.5 }}
-      >
-        <Canvas camera={{ position: [0, 0, 4] }}>
-          <ambientLight intensity={0.4} />
-          <directionalLight position={[0, 0, 5]} />
-          <LilacKnot onClick={handleKnotClick} />
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={3} />
-        </Canvas>
+        <SparkleDoodle />
+        <span className="font-handwriting text-xl text-amber md:text-2xl">
+          scroll down to learn more :)
+        </span>
+        <DownArrowDoodle />
       </motion.div>
     </motion.div>
+    </>
   );
 }

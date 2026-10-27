@@ -1,9 +1,14 @@
 import { motion } from "framer-motion";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import { useState } from "react";
 
 const experiences = [
+  {
+    title: "Fraud Analytics Intern",
+    company: "Wealthsimple",
+    team: "Fraud Countermeasures",
+    duration: "Incoming Jan 2027",
+    image: "/images/experience/wealthsimple.svg",
+    technologies: [],
+  },
   {
     title: "Software Engineering Intern",
     company: "Shopify",
@@ -23,8 +28,6 @@ const experiences = [
   {
     title: "Mobile Software Engineering Intern",
     company: "Vivid Seats",
-    // description:
-    //   "Contributing to the Vivid Seats mobile app by building customer-facing features in React Native for iOS and Android. Partnering with product and design to refine flows and UI, aligning implementations with accessibility and performance best practices. Troubleshooting and optimizing performance (rendering, network usage, start-up time) using Xcode and Android profilers and structured logging and analytics.",
     duration: "Sept 2025 - Dec 2025",
     image: "/images/experience/vividSeats.png",
     technologies: [
@@ -34,27 +37,11 @@ const experiences = [
       "Android Dev",
       "Xcode",
       "Expo",
-      
-    ],
-  },
-  {
-    title: "Financial Education Ambassador",
-    company: "Wealthsimple Foundation",
-    duration: "May 2025 - Dec 2025",
-    image: "/images/experience/wealthsimple.png",
-    technologies: [
-      "Content Strategy",
-      "Financial Literacy",
-      "Social Media",
-      "Engagement Analytics",
-      "Marketing Collaboration",
     ],
   },
   {
     title: "Full Stack Developer Intern II",
     company: "Rocket",
-    // description:
-    //   "Developing and optimizing core features for Rocket.com ensuring a seamless user experience across the platform. Collaborating with cross-functional Agile teams to gather requirements, analyze technical challenges, and implement scalable solutions that meet business objectives.",
     duration: "Jan 2025 - April 2025",
     image: "/images/experience/rocket.png",
     technologies: [
@@ -70,8 +57,6 @@ const experiences = [
   {
     title: "Co-Founder, Technical Product Lead",
     company: "FinBud",
-    // description:
-    //   "Created a user-centric decision tree model to deliver tailored financial advice. Directing a team of 4 developers in creating a web application using React, Next.js, Docker, and AWS. Implemented a CI/CD pipeline in AWS and hosted the application with AWS Amplify",
     duration: "July 2024 - April 2026",
     image: "/images/experience/finLogo.png",
     technologies: [
@@ -91,8 +76,6 @@ const experiences = [
   {
     title: "Full Stack Developer Intern",
     company: "Rocket",
-    // description:
-    //   "Developed and thoroughly tested full stack web applications while writing 97% coverage unit and e2e tests with Cypress. Wrote robust and maintainable code while adhering to best practices, contributing to the team's goal of maintaining high code quality and reliability",
     duration: "May 2024 - Aug 2024",
     image: "/images/experience/rocket.png",
     technologies: [
@@ -107,57 +90,16 @@ const experiences = [
   },
 ];
 
-function LilacKnot() {
-  const [rotation, setRotation] = useState([0, 0, 0]);
-  const [color, setColor] = useState("#BC86F7");
-  const [metalness, setMetalness] = useState(0.7);
-  const [roughness, setRoughness] = useState(0.3);
-
-  const handleClick = () => {
-    setRotation([Math.PI / 2, Math.PI / 2, Math.PI / 2]);
-    
-    setColor(color === "#BC86F7" ? "#9B4DCA" : "#BC86F7");
-    
-    setMetalness(metalness === 0.7 ? 0.3 : 0.7);
-    setRoughness(roughness === 0.3 ? 0.7 : 0.3);
-  };
-
-  return (
-    <mesh onClick={handleClick} rotation={rotation} position={[0, 0, 0]}>
-      <torusKnotGeometry args={[1, 0.4, 100, 16]} />
-      <meshStandardMaterial color={color} flatShading metalness={metalness} roughness={roughness} />
-    </mesh>
-  );
-}
-
-function LilacTorus() {
-  const [rotation, setRotation] = useState([0, 0, 0]);
-  const [color, setColor] = useState("#BC86F7");
-  const [metalness, setMetalness] = useState(0.5);
-  const [roughness, setRoughness] = useState(0.3);
-
-  const handleClick = () => {
-    setRotation([Math.PI / 2, Math.PI / 2, Math.PI / 2]);
-    
-    setColor(color === "#BC86F7" ? "#BF40BF" : "#BC86F7");
-    
-    setMetalness(metalness === 0.5 ? 0.9 : 0.5);
-    setRoughness(roughness === 0.3 ? 0.7 : 0.3);
-  };
-
-  return (
-    <mesh onClick={handleClick} rotation={rotation} scale={1.5} position={[0, 0, 0]}>
-      <torusGeometry args={[1, 0.4, 16, 100]} />
-      <meshStandardMaterial color={color} flatShading metalness={metalness} roughness={roughness} />
-    </mesh>
-  );
-}
-
 export default function Experience() {
   return (
-    <section id="experience-section" className="relative mt-4 px-6 py-12 flex flex-col items-center overflow-hidden">
+    <section
+      id="experience-section"
+      className="relative px-4 md:px-6 py-16"
+      style={{ backgroundColor: 'transparent', zIndex: 1 }}
+    >
+      {/* Title */}
       <motion.h2
-        className="text-4xl font-semibold text-[#333] dark:text-[#f5f4f2] mb-12 z-10"
+        className="text-4xl md:text-5xl font-serif font-bold text-ink mb-8 md:mb-12 text-center"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -165,80 +107,82 @@ export default function Experience() {
         My Experience
       </motion.h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl w-full z-10">
+      {/* Timeline */}
+      <div className="max-w-4xl mx-auto relative">
+        {/* Timeline line */}
+        <div className="absolute left-4 md:left-8 top-0 bottom-0 w-0.5 bg-stone hidden sm:block" />
+
+        {/* Experience items */}
         {experiences.map((experience, index) => (
           <motion.div
             key={index}
-            className="bg-white/80 dark:bg-[#333]/80 backdrop-blur-md rounded-2xl p-6 transition-all duration-300 border border-purple-100 dark:border-purple-800 group"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            whileHover={{ 
-              scale: 1.03
-            }}
+            className="relative pl-8 md:pl-20 mb-8 md:mb-12"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            viewport={{ once: true }}
           >
-            <div className="relative overflow-hidden rounded-lg mb-4 group">
-              <img
-                src={experience.image}
-                alt={experience.company}
-                className="w-full h-48 object-contain bg-white/50 dark:bg-[#333] p-4 transform transition-transform duration-500 group-hover:scale-110"
-              />
-            </div>
-            <div className="space-y-3">
-              <h3 className="text-xl font-semibold text-gray-800 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
-                {experience.title}
-              </h3>
-              <div className="space-y-1">
-                <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                  <span className="text-sm font-medium text-purple-600 dark:text-purple-400">
-                    {experience.company}
-                  </span>
-                  <span className="text-sm text-gray-500 dark:text-gray-400">•</span>
-                  <span className="text-sm text-gray-500 dark:text-gray-400">
+            {/* Timeline dot */}
+            <div className="absolute left-2 md:left-6 top-6 w-4 md:w-5 h-4 md:h-5 bg-forest rounded-full border-4 border-ivory shadow-md hidden sm:block" />
+
+            {/* Card */}
+            <motion.div
+              className="bg-card border-2 border-stone rounded-sm p-4 md:p-6 shadow-[3px_3px_0px_#DCD7CD] md:shadow-[4px_4px_0px_#DCD7CD] hover:shadow-[4px_4px_0px_#1E4631] md:hover:shadow-[6px_6px_0px_#1E4631] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+              whileHover={{ scale: 1.01 }}
+            >
+              <div className="flex flex-col sm:flex-row items-start gap-4 md:gap-6">
+                {/* Company logo - Fixed size for consistency */}
+                <div className="flex-shrink-0 w-24 h-24 md:w-36 md:h-28 bg-white p-2 md:p-3 rounded-sm border border-stone shadow-sm mx-auto sm:mx-0">
+                  <img
+                    src={experience.image}
+                    alt={experience.company}
+                    className="h-full w-full object-contain"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 w-full">
+                  {/* Title - Bold */}
+                  <h3 className="text-lg md:text-xl font-serif font-bold text-ink mb-1 text-center sm:text-left">
+                    {experience.title}
+                  </h3>
+                  
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mb-2">
+                    <span className="font-bold text-forest text-center sm:text-left">
+                      {experience.company}
+                    </span>
+                    {experience.team && (
+                      <>
+                        <span className="text-stone hidden sm:inline">•</span>
+                        <span className="text-muted text-sm text-center sm:text-left">
+                          {experience.team}
+                        </span>
+                      </>
+                    )}
+                  </div>
+                  
+                  <span className="font-mono text-xs text-muted block text-center sm:text-left mb-3">
                     {experience.duration}
                   </span>
+
+                  {/* Tech tags - Responsive */}
+                  <div className="flex flex-wrap gap-1.5 md:gap-2 justify-center sm:justify-start">
+                    {experience.technologies.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="font-mono text-[10px] md:text-xs bg-white text-ink border border-stone px-2 py-1 rounded-sm shadow-[1px_1px_0px_#DCD7CD]"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                {experience.team && (
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
-                    {experience.team}
-                  </p>
-                )}
               </div>
-              {/* <p className="text-gray-600 dark:text-[#f5f4f2]">
-                {experience.description}
-              </p> */}
-              <div className="flex flex-wrap gap-2 pt-2">
-                {experience.technologies.map((tech, techIndex) => (
-                  <span
-                    key={techIndex}
-                    className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 text-sm font-medium rounded-full transition-colors duration-300 group-hover:bg-purple-200 dark:group-hover:bg-purple-800"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
+            </motion.div>
           </motion.div>
         ))}
-      </div>
-
-      {/* Lilac Knot */}
-      <div className="absolute top-8 right-8 w-64 h-64 opacity-60 dark:opacity-90 z-0">
-        <Canvas camera={{ position: [0, 0, 4] }}>
-          <ambientLight intensity={0.4} />
-          <directionalLight position={[0, 0, 5]} />
-          <LilacKnot />
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={3} />
-        </Canvas>
-      </div>
-
-      {/* Lilac Torus */}
-      <div className="absolute bottom-8 left-8 w-64 h-64 opacity-60 dark:opacity-90 z-0">
-        <Canvas camera={{ position: [0, 0, 4] }}>
-          <ambientLight intensity={0.4} />
-          <directionalLight position={[0, 0, 5]} />
-          <LilacTorus />
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={3} />
-        </Canvas>
       </div>
     </section>
   );

@@ -1,53 +1,18 @@
 import { motion } from "framer-motion";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, MeshDistortMaterial } from "@react-three/drei";
-import { useState } from "react";
-import {
-  FaInstagram,
-  FaLinkedin,
-  FaLinkedinIn,
-  FaGithub,
-} from "react-icons/fa";
-
-function LilacKnot() {
-  const [scale, setScale] = useState(1.6);
-  const [color, setColor] = useState("#BC86F7");
-
-  const handleClick = () => {
-    setScale(scale === 1.6 ? 2 : 1.6);
-    setColor(color === "#BC86F7" ? "#BF40BF" : "#BC86F7");
-  };
-
-  return (
-    <mesh onClick={handleClick} scale={scale} position={[0, 0, 0]}>
-      <torusKnotGeometry args={[1, 0.4, 100, 16]} />
-      <meshStandardMaterial color={color} flatShading />
-    </mesh>
-  );
-}
-
-function LilacCapsule() {
-  const [rotation, setRotation] = useState([Math.PI / 4, Math.PI / 4, 0]);
-  const [distort, setDistort] = useState(0.3);
-
-  const handleClick = () => {
-    setRotation([Math.PI / 2, Math.PI / 2, Math.PI / 2]);
-    setDistort(distort === 0.3 ? 0.6 : 0.3);
-  };
-
-  return (
-    <mesh onClick={handleClick} rotation={rotation}>
-      <capsuleGeometry args={[2.5, 0.5, 16, 32]} />
-      <MeshDistortMaterial color="#BC86F7" distort={distort} speed={2} />
-    </mesh>
-  );
-}
+import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaMountain } from "react-icons/fa";
 
 export default function Contact() {
   return (
-    <section id="contact-section" className="relative min-h-screen px-6 py-16 flex flex-col items-center justify-center overflow-hidden">
+    <section
+      id="contact-section"
+      className="relative min-h-screen px-6 py-16 flex flex-col items-center justify-center"
+      style={{ backgroundColor: 'transparent', zIndex: 1 }}
+    >
+      {/* Title */}
       <motion.h2
-        className="text-4xl font-semibold text-[#333] dark:text-white mb-4 z-10"
+        className="text-5xl font-serif font-bold text-ink mb-6 z-10 text-center"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -56,7 +21,7 @@ export default function Contact() {
       </motion.h2>
 
       <motion.p
-        className="text-lg text-gray-600 dark:text-[#f5f4f2] mb-6 text-center z-10"
+        className="text-lg text-muted mb-12 text-center z-10 max-w-md"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
@@ -65,63 +30,106 @@ export default function Contact() {
         coffee.
       </motion.p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl w-full z-10">
+      {/* Contact Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl w-full z-10 mb-16">
+        {/* Email Card */}
+        <motion.a
+          href="mailto:t2devrie@uwaterloo.ca"
+          className="bg-card border-2 border-stone rounded-sm p-6 shadow-[4px_4px_0px_#DCD7CD] hover:shadow-[6px_6px_0px_#1E4631] hover:-translate-x-1 hover:-translate-y-1 transition-all group relative"
+          initial={{ opacity: 0, y: 20, rotate: -0.5 }}
+          animate={{ opacity: 1, y: 0, rotate: -0.5 }}
+          whileHover={{ rotate: 0 }}
+          transition={{ duration: 0.3, delay: 0.2 }}
+        >
+          {/* Washi tape */}
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-5 bg-forest/20 border border-forest/10 -rotate-1 shadow-sm" />
+          
+          <div className="flex flex-col items-center space-y-3 pt-2">
+            <div className="bg-forest/10 p-4 rounded-sm group-hover:bg-forest/20 transition-colors">
+              <FaEnvelope className="text-3xl text-forest" />
+            </div>
+            <div className="text-center">
+              <h3 className="text-lg font-serif font-bold text-ink">Email</h3>
+              <p className="text-muted text-sm mt-1">Say hi!</p>
+            </div>
+          </div>
+        </motion.a>
+
+        {/* LinkedIn Card */}
         <motion.a
           href="https://www.linkedin.com/in/taylor-r-devries/"
           target="_blank"
-          className="bg-white/80 dark:bg-[#333]/80 backdrop-blur-md rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-purple-100 dark:border-purple-800 group"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
+          rel="noopener noreferrer"
+          className="bg-card border-2 border-stone rounded-sm p-6 shadow-[4px_4px_0px_#DCD7CD] hover:shadow-[6px_6px_0px_#2A7B57] hover:-translate-x-1 hover:-translate-y-1 transition-all group relative"
+          initial={{ opacity: 0, y: 20, rotate: 0.7 }}
+          animate={{ opacity: 1, y: 0, rotate: 0.7 }}
+          whileHover={{ rotate: 0 }}
+          transition={{ duration: 0.3, delay: 0.4 }}
         >
-          <div className="flex items-center space-x-4">
-            <div className="bg-purple-100 dark:bg-purple-900 p-3 rounded-lg group-hover:bg-purple-200 dark:group-hover:bg-purple-800 transition-colors duration-300">
-              <FaLinkedin className="text-2xl text-purple-600 dark:text-purple-300" />
+          {/* Washi tape */}
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-5 bg-emerald/20 border border-emerald/10 rotate-1 shadow-sm" />
+          
+          <div className="flex flex-col items-center space-y-3 pt-2">
+            <div className="bg-emerald/10 p-4 rounded-sm group-hover:bg-emerald/20 transition-colors">
+              <FaLinkedin className="text-3xl text-emerald" />
             </div>
-            <div>
-              <h3 className="text-lg font-semibold text-gray-800 dark:text-white">LinkedIn</h3>
-              <p className="text-gray-600 dark:text-gray-300">Connect with me</p>
+            <div className="text-center">
+              <h3 className="text-lg font-serif font-bold text-ink">LinkedIn</h3>
+              <p className="text-muted text-sm mt-1">Connect with me</p>
             </div>
           </div>
         </motion.a>
 
+        {/* GitHub Card */}
         <motion.a
           href="https://github.com/Taylor-DeVries"
           target="_blank"
-          className="bg-white/80 dark:bg-[#333]/80 backdrop-blur-md rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-purple-100 dark:border-purple-800 group"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
+          rel="noopener noreferrer"
+          className="bg-card border-2 border-stone rounded-sm p-6 shadow-[4px_4px_0px_#DCD7CD] hover:shadow-[6px_6px_0px_#D97736] hover:-translate-x-1 hover:-translate-y-1 transition-all group relative"
+          initial={{ opacity: 0, y: 20, rotate: -0.3 }}
+          animate={{ opacity: 1, y: 0, rotate: -0.3 }}
+          whileHover={{ rotate: 0 }}
+          transition={{ duration: 0.3, delay: 0.6 }}
         >
-          <div className="flex items-center space-x-4">
-            <div className="bg-purple-100 dark:bg-purple-900 p-3 rounded-lg group-hover:bg-purple-200 dark:group-hover:bg-purple-800 transition-colors duration-300">
-              <FaGithub className="text-2xl text-purple-600 dark:text-purple-300" />
+          {/* Washi tape */}
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-5 bg-amber/20 border border-amber/10 -rotate-2 shadow-sm" />
+          
+          <div className="flex flex-col items-center space-y-3 pt-2">
+            <div className="bg-amber/10 p-4 rounded-sm group-hover:bg-amber/20 transition-colors">
+              <FaGithub className="text-3xl text-amber" />
             </div>
-            <div>
-              <h3 className="text-lg font-semibold text-gray-800 dark:text-white">GitHub</h3>
-              <p className="text-gray-600 dark:text-gray-300">Check out my code</p>
+            <div className="text-center">
+              <h3 className="text-lg font-serif font-bold text-ink">GitHub</h3>
+              <p className="text-muted text-sm mt-1">Check out my code</p>
             </div>
           </div>
         </motion.a>
       </div>
 
-      {/* Top Right Blob */}
-      <div className="absolute top-10 right-10 w-72 h-72 z-0 opacity-70 dark:opacity-90">
-        <Canvas camera={{ position: [0, 0, 6] }}>
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[0, 0, 5]} />
-          <LilacKnot />
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={3} />
-        </Canvas>
-      </div>
-
-      {/* Bottom Left Capsule */}
-      <div className="absolute bottom-10 left-10 w-72 h-72 z-0 opacity-50 dark:opacity-80">
-        <Canvas camera={{ position: [0, 0, 6] }}>
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[0, 0, 5]} />
-          <LilacCapsule />
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={3} />
-        </Canvas>
-      </div>
+      {/* Play Interactive Climb Button */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1 }}
+      >
+        <Link to="/climb">
+          <motion.div
+            className="group relative flex items-center gap-2 px-6 py-3 rounded-sm font-semibold text-ivory shadow-md overflow-hidden cursor-pointer font-mono bg-forest"
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "6px 6px 0px #1E4631"
+            }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <FaMountain className="text-lg" />
+            <span>Play Interactive Climb</span>
+            <span className="absolute -right-1 -top-1 flex h-3 w-3">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber opacity-75" />
+              <span className="relative inline-flex h-3 w-3 rounded-full bg-amber" />
+            </span>
+          </motion.div>
+        </Link>
+      </motion.div>
     </section>
   );
 }

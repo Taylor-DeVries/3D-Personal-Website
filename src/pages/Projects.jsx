@@ -1,59 +1,35 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 
 const projects = [
   {
     title: "Taylor's Travel Diary",
     description:
-      "A personal travel diary showcasing 392 photos across 9 countries, with an interactive 3D globe you can spin, zoom, and click to explore country journals. Vibe coded in about an hour — a growing collection of people, places, and tiny moments from around the world.",
+      "A personal travel diary showcasing 392 photos across 9 countries with an interactive 3D globe.",
     link: "https://tays-travel-diary.vercel.app/",
     image: "/images/projects/travel-diary.png",
-    technologies: [
-      "Claude",
-      "React",
-      "Vite",
-      "react-globe.gl",
-      "Vercel Blob",
-      "Vercel",
-    ],
+    technologies: ["Claude", "React", "Vite", "react-globe.gl", "Vercel"],
   },
   {
     title: "F1 Telemetry Dashboard",
     description:
-      "A comprehensive Formula 1 telemetry dashboard featuring real-time data visualization, driver performance metrics, track mapping, and interactive telemetry analysis. Built with modern web technologies to provide an immersive F1 racing experience with live speed, RPM, throttle, and brake data visualization.",
+      "Comprehensive F1 telemetry with real-time data visualization and driver performance metrics.",
     link: "https://f1-telemetry-dashboard.vercel.app/",
     image: "/images/projects/f1-dashboard.png",
-    technologies: [
-      "React",
-      "TypeScript",
-      "D3.js",
-      "Chart.js",
-      "TailwindCSS",
-      "Real-time Data",
-      "Data Visualization",
-    ],
+    technologies: ["React", "TypeScript", "D3.js", "Chart.js", "TailwindCSS"],
   },
   {
     title: "FinBud",
     description:
-      "FinBud is an innovative platform designed to simplify personal finance for young people. It offers an easy-to-use interface that guides users through their financial journey with step-by-step instructions.",
+      "An innovative platform designed to simplify personal finance for young people.",
     link: "https://finbud.ca/",
     image: "/images/projects/finbud.png",
-    technologies: [
-      "React",
-      "Next.js",
-      "C#",
-      "DynamoDB",
-      "Auth0",
-      "TailwindCSS",
-      "AWS",
-      "Docker",
-    ],
+    technologies: ["React", "Next.js", "C#", "DynamoDB", "AWS", "Docker"],
   },
   {
     title: "Personal Finance Dashboard",
     description:
-      "A lightweight Streamlit dashboard that visualizes personal spending data. Users can upload a CSV of expenses to explore trends by category, track total spending over time, and filter by custom date ranges, all in an interactive, browser-based app.",
+      "A lightweight Streamlit dashboard that visualizes personal spending data.",
     link: "https://personal-dashboard.streamlit.app/",
     image: "/images/projects/dashboard.png",
     technologies: ["Streamlit", "Python", "Pandas", "Matplotlib", "Seaborn"],
@@ -61,22 +37,15 @@ const projects = [
   {
     title: "Plant Pal",
     description:
-      "Plant Pal is a cozy virtual desk plant web app built with React, TypeScript, and Tailwind CSS. Take care of your plant while you study or work—watch it grow and react to your care in real-time!",
+      "A cozy virtual desk plant web app - watch it grow and react to your care in real-time!",
     link: "https://plantpal-relax.vercel.app/",
     image: "/images/projects/plant.png",
-    technologies: [
-      "React",
-      "TypeScript",
-      "Vite",
-      "TailwindCSS",
-      "Local Storage",
-      "Vercel",
-    ],
+    technologies: ["React", "TypeScript", "Vite", "TailwindCSS", "Vercel"],
   },
   {
     title: "Flappy Pal",
     description:
-      "A cute, pastel-themed Flappy Bird–style web game built with React, TypeScript, and Tailwind CSS. Tap or press space to flap your way through pink pixel pipes and beat your high score!",
+      "A cute, pastel-themed Flappy Bird–style web game.",
     link: "https://flappy-pal.vercel.app/",
     image: "/images/projects/flappy.png",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
@@ -84,7 +53,7 @@ const projects = [
   {
     title: "Focus Cat",
     description:
-      "Focus Cat is a minimalist Chrome extension that lets you switch between study and break modes, complete with a visual timer, cat moods, and adorable animations.",
+      "A minimalist Chrome extension for study/break modes with cat animations.",
     link: "https://github.com/Taylor-DeVries/focus-cat",
     image: "/images/projects/focus.png",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Chrome Extension"],
@@ -92,7 +61,7 @@ const projects = [
   {
     title: "AR Headset",
     description:
-      "Made for the SE101 course, this AR headset displays resumes next to job applicants. It uses facial recognition and AR technology to enhance the hiring process.",
+      "An AR headset that displays resumes beside applicants using facial recognition.",
     link: "https://www.youtube.com/watch?v=sjttNGrEmtk",
     image: "/images/projects/AR.png",
     technologies: ["Unity", "C#", "AR Foundation", "Fusion 360", "Figma"],
@@ -100,7 +69,7 @@ const projects = [
   {
     title: "BrainScape",
     description:
-      "a virtual study space revolutionizing collaborative learning. BrainScape fosters a dynamic online environment for students in the same courses to study together. ",
+      "A virtual study space revolutionizing collaborative learning for students.",
     link: "https://devpost.com/software/brainscape",
     image: "/images/projects/brainscape2.png",
     technologies: ["JavaScript", "Html", "CSS", "Figma", "MLH Winner 🏆"],
@@ -108,273 +77,243 @@ const projects = [
   {
     title: "AutoRithm Robot",
     description:
-      "Constructed AutoRithm robot made with Lego EV3 coded in robot-c that sorts through food items and autonomizes food packaging.",
+      "Constructed AutoRithm robot made with Lego EV3 that sorts through food items.",
     link: "https://devpost.com/software/handsfree-y7lsbq",
     image: "/images/projects/robot.png",
     technologies: ["Lego EV3", "Robot-C"],
   },
 ];
 
+// Single page component with high-quality image
+const NotebookPage = ({ project, side }) => {
+  return (
+    <div
+      className={`absolute inset-0 flex flex-col ${
+        side === "left" ? "items-end pr-12" : "items-start pl-12"
+      } p-6 overflow-hidden`}
+      style={{
+        background: "linear-gradient(to right, #F7F5F0 0%, #FAF9F6 100%)",
+        boxShadow: side === "left" 
+          ? "inset -20px 0 40px rgba(0,0,0,0.05)" 
+          : "inset 20px 0 40px rgba(0,0,0,0.05)",
+      }}
+    >
+      {/* Image container - Fixed height for consistency */}
+      <div className="w-full mb-4 bg-white rounded-sm overflow-hidden shadow-md">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-56 object-cover"
+          loading="lazy"
+        />
+      </div>
+
+      {/* Title - Bold */}
+      <h3 className="text-lg md:text-xl font-serif font-bold text-ink mb-2 text-center w-full">
+        {project.title}
+      </h3>
+
+      {/* Description */}
+      <p className="text-xs md:text-sm text-muted mb-3 text-center w-full line-clamp-3 px-2">
+        {project.description}
+      </p>
+
+      {/* Tech tags */}
+      <div className="flex flex-wrap gap-1.5 justify-center w-full mb-3">
+        {project.technologies.slice(0, 4).map((tech, i) => (
+          <span
+            key={i}
+            className="font-mono text-[10px] md:text-xs bg-white text-ink border border-stone px-2 py-1 rounded-sm shadow-sm"
+          >
+            {tech}
+          </span>
+        ))}
+      </div>
+
+      {/* Link */}
+      <a
+        href={project.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-mono text-xs text-forest hover:text-emerald transition-colors mt-auto text-center"
+      >
+        View Project →
+      </a>
+    </div>
+  );
+};
+
 export default function Projects() {
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [isExpanded, setIsExpanded] = useState(false);
-  const scrollRef = useRef(null);
-  const isDragging = useRef(false);
-  const dragStartX = useRef(0);
-  const scrollStartX = useRef(0);
-  const autoScrollPaused = useRef(false);
-  const AUTO_SCROLL_SPEED = 1.2; // px per frame
-  const AUTO_SCROLL_PAUSE_DURATION = 2000; // ms
+  const [currentPage, setCurrentPage] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const totalPages = Math.ceil(projects.length / 2);
+  const containerRef = useRef(null);
 
-  // Auto-scroll logic
-  useEffect(() => {
-    let frameId;
-    function autoScroll() {
-      if (!autoScrollPaused.current && scrollRef.current) {
-        scrollRef.current.scrollLeft += AUTO_SCROLL_SPEED;
-        // Loop scroll
-        if (
-          scrollRef.current.scrollLeft + scrollRef.current.offsetWidth >=
-          scrollRef.current.scrollWidth
-        ) {
-          scrollRef.current.scrollLeft = 0;
-        }
-      }
-      frameId = requestAnimationFrame(autoScroll);
-    }
-    frameId = requestAnimationFrame(autoScroll);
-    return () => cancelAnimationFrame(frameId);
-  }, []);
-
-  // Drag-to-scroll logic
-  useEffect(() => {
-    const container = scrollRef.current;
-    if (!container) return;
-
-    const onMouseDown = (e) => {
-      isDragging.current = true;
-      dragStartX.current = e.pageX - container.offsetLeft;
-      scrollStartX.current = container.scrollLeft;
-      autoScrollPaused.current = true;
-      container.classList.add("cursor-grabbing");
-    };
-    const onMouseMove = (e) => {
-      if (!isDragging.current) return;
-      const x = e.pageX - container.offsetLeft;
-      const walk = (dragStartX.current - x);
-      container.scrollLeft = scrollStartX.current + walk;
-    };
-    const onMouseUp = () => {
-      if (isDragging.current) {
-        isDragging.current = false;
-        container.classList.remove("cursor-grabbing");
-        // Resume auto-scroll after a delay
-        setTimeout(() => {
-          autoScrollPaused.current = false;
-        }, AUTO_SCROLL_PAUSE_DURATION);
-      }
-    };
-    // Touch events
-    const onTouchStart = (e) => {
-      isDragging.current = true;
-      dragStartX.current = e.touches[0].pageX - container.offsetLeft;
-      scrollStartX.current = container.scrollLeft;
-      autoScrollPaused.current = true;
-      container.classList.add("cursor-grabbing");
-    };
-    const onTouchMove = (e) => {
-      if (!isDragging.current) return;
-      const x = e.touches[0].pageX - container.offsetLeft;
-      const walk = (dragStartX.current - x);
-      container.scrollLeft = scrollStartX.current + walk;
-    };
-    const onTouchEnd = () => {
-      if (isDragging.current) {
-        isDragging.current = false;
-        container.classList.remove("cursor-grabbing");
-        setTimeout(() => {
-          autoScrollPaused.current = false;
-        }, AUTO_SCROLL_PAUSE_DURATION);
-      }
-    };
-    // Mouse events
-    container.addEventListener("mousedown", onMouseDown);
-    container.addEventListener("mousemove", onMouseMove);
-    container.addEventListener("mouseleave", onMouseUp);
-    container.addEventListener("mouseup", onMouseUp);
-    // Touch events
-    container.addEventListener("touchstart", onTouchStart);
-    container.addEventListener("touchmove", onTouchMove);
-    container.addEventListener("touchend", onTouchEnd);
-    return () => {
-      container.removeEventListener("mousedown", onMouseDown);
-      container.removeEventListener("mousemove", onMouseMove);
-      container.removeEventListener("mouseleave", onMouseUp);
-      container.removeEventListener("mouseup", onMouseUp);
-      container.removeEventListener("touchstart", onTouchStart);
-      container.removeEventListener("touchmove", onTouchMove);
-      container.removeEventListener("touchend", onTouchEnd);
-    };
-  }, []);
-
-  const projectVariants = {
-    hidden: { scale: 0, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 260,
-        damping: 20
-      }
-    },
-    hover: {
-      scale: 1.05,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 10
-      }
+  const goToNextPage = () => {
+    if (!isAnimating && currentPage < totalPages - 1) {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setCurrentPage(prev => prev + 1);
+        setIsAnimating(false);
+      }, 700);
     }
   };
 
-  const modalVariants = {
-    hidden: { 
-      scale: 0.8,
-      opacity: 0,
-      borderRadius: "50%"
-    },
-    visible: { 
-      scale: 1,
-      opacity: 1,
-      borderRadius: "20px",
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 25
-      }
-    },
-    exit: {
-      scale: 0.8,
-      opacity: 0,
-      borderRadius: "50%",
-      transition: {
-        duration: 0.2
-      }
+  const goToPrevPage = () => {
+    if (!isAnimating && currentPage > 0) {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setCurrentPage(prev => prev - 1);
+        setIsAnimating(false);
+      }, 700);
     }
   };
+
+  const leftProject = projects[currentPage * 2];
+  const rightProject = projects[currentPage * 2 + 1];
 
   return (
-    <section id="projects-section" className="relative py-8 px-6 flex flex-col items-center overflow-hidden">
+    <section
+      id="projects-section"
+      className="relative px-4 md:px-6 py-16 min-h-screen flex flex-col items-center"
+      style={{ backgroundColor: '#F7F5F0', zIndex: 1 }}
+    >
+      {/* Title */}
       <motion.h2
-        className="text-4xl font-semibold text-[#333] dark:text-[#f5f4f2] mt-6 mb-2 z-10"
+        className="text-4xl md:text-5xl font-serif font-bold text-ink mb-4 md:mb-6 text-center"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
         Projects
       </motion.h2>
+
       <motion.p
-        className="text-gray-600 dark:text-gray-300 mb-8 z-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
+        className="text-muted text-base md:text-lg mb-8 md:mb-12 text-center max-w-2xl px-4"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
       >
-        Scroll through and click on projects to learn more
+        Flip through my project notebook
       </motion.p>
 
-      <div className="relative w-full overflow-x-auto overflow-y-hidden hide-scrollbar" ref={scrollRef} style={{ cursor: 'grab', WebkitOverflowScrolling: 'touch' }}>
-        <div className="flex gap-12 py-4 whitespace-nowrap select-none">
-          {projects.concat(projects).map((project, index) => (
+      {/* 3D Notebook Container - Responsive */}
+      <div 
+        className="relative w-full max-w-5xl"
+        style={{ perspective: "2500px" }}
+        ref={containerRef}
+      >
+        {/* Notebook */}
+        <div
+          className="relative bg-card rounded-sm overflow-hidden mx-auto"
+          style={{
+            width: "100%",
+            maxWidth: "900px",
+            height: "auto",
+            minHeight: "500px",
+            aspectRatio: "16/10",
+            boxShadow: "0 10px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(220, 215, 205, 0.5)",
+          }}
+        >
+          {/* Notebook binding/spine */}
+          <div
+            className="absolute left-1/2 top-0 bottom-0 w-6 md:w-8 -translate-x-1/2 z-20"
+            style={{
+              background: "linear-gradient(to right, #DCD7CD 0%, #EFECE6 30%, #DCD7CD 50%, #EFECE6 70%, #DCD7CD 100%)",
+              boxShadow: "0 0 20px rgba(0,0,0,0.1)",
+            }}
+          >
+            {/* Binding stitches */}
+            {[...Array(8)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-full h-px bg-stone"
+                style={{ top: `${(i + 1) * 11}%` }}
+              />
+            ))}
+          </div>
+
+          {/* Left Page (static) */}
+          <div
+            className="absolute left-0 top-0 bottom-0 overflow-hidden"
+            style={{
+              width: "calc(50% - 12px)",
+              transform: "rotateY(0deg)",
+              transformOrigin: "right center",
+            }}
+          >
+            {leftProject && <NotebookPage project={leftProject} side="left" />}
+            
+            {/* Page edge shadow */}
+            <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-transparent to-black/5 pointer-events-none" />
+          </div>
+
+          {/* Right Page (flippable) */}
+          <AnimatePresence mode="wait">
             <motion.div
-              key={index}
-              className="flex flex-col items-center w-48 cursor-pointer"
-              variants={projectVariants}
-              whileHover="hover"
-              onClick={() => {
-                setSelectedProject(project);
-                setIsExpanded(true);
+              key={currentPage}
+              className="absolute right-0 top-0 bottom-0 overflow-hidden"
+              style={{
+                width: "calc(50% - 12px)",
+                transformOrigin: "left center",
+              }}
+              initial={{ rotateY: -90, opacity: 0 }}
+              animate={{ rotateY: 0, opacity: 1 }}
+              exit={{ rotateY: 90, opacity: 0 }}
+              transition={{ 
+                duration: 0.7, 
+                type: "spring",
+                stiffness: 100,
+                damping: 20
               }}
             >
-              <div className="relative w-48 h-48 mb-3">
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg shadow-lg overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-300"
-                  />
-                </div>
-              </div>
-              <h3 className="text-center font-semibold text-gray-800 dark:text-white text-base">
-                {project.title}
-              </h3>
+              {rightProject && <NotebookPage project={rightProject} side="right" />}
+              
+              {/* Page edge shadow */}
+              <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-transparent to-black/5 pointer-events-none" />
             </motion.div>
-          ))}
+          </AnimatePresence>
+
+          {/* Page edges (book thickness effect) */}
+          <div
+            className="absolute left-0 top-0 bottom-0 w-1"
+            style={{
+              background: "repeating-linear-gradient(to right, transparent, transparent 0.5px, #DCD7CD 0.5px, #DCD7CD 1px)",
+            }}
+          />
+        </div>
+
+        {/* Navigation - Responsive */}
+        <div className="flex justify-center items-center gap-4 md:gap-6 mt-8 px-4">
+          <button
+            onClick={goToPrevPage}
+            disabled={currentPage === 0}
+            className={`px-4 md:px-6 py-2 font-mono text-xs md:text-sm rounded-sm border-2 border-stone transition-all ${
+              currentPage === 0
+                ? "opacity-50 cursor-not-allowed"
+                : "hover:bg-forest hover:text-ivory hover:border-forest shadow-[2px_2px_0px_#DCD7CD] hover:shadow-[3px_3px_0px_#1E4631]"
+            }`}
+          >
+            ← Previous
+          </button>
+
+          <span className="font-mono text-xs md:text-sm text-muted flex items-center">
+            Page {currentPage + 1} of {totalPages}
+          </span>
+
+          <button
+            onClick={goToNextPage}
+            disabled={currentPage === totalPages - 1}
+            className={`px-4 md:px-6 py-2 font-mono text-xs md:text-sm rounded-sm border-2 border-stone transition-all ${
+              currentPage === totalPages - 1
+                ? "opacity-50 cursor-not-allowed"
+                : "hover:bg-forest hover:text-ivory hover:border-forest shadow-[2px_2px_0px_#DCD7CD] hover:shadow-[3px_3px_0px_#1E4631]"
+            }`}
+          >
+            Next →
+          </button>
         </div>
       </div>
-
-      <AnimatePresence>
-        {selectedProject && isExpanded && (
-          <motion.div
-            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsExpanded(false)}
-          >
-            <motion.div
-              className="bg-white dark:bg-[#333] rounded-2xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
-              variants={modalVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
-                  {selectedProject.title}
-                </h3>
-                <motion.button
-                  className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={() => setIsExpanded(false)}
-                >
-                  ✕
-                </motion.button>
-              </div>
-              <img
-                src={selectedProject.image}
-                alt={selectedProject.title}
-                className="w-full h-48 object-cover rounded-lg mb-4"
-              />
-              <p className="text-gray-600 dark:text-[#f5f4f2] mb-4">
-                {selectedProject.description}
-              </p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {selectedProject.technologies.map((tech, index) => (
-                  <span
-                    key={index}
-                    className="px-2 py-1 bg-purple-100 dark:bg-purple-700 text-purple-700 dark:text-purple-100 text-sm font-medium rounded-lg"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              <motion.a
-                href={selectedProject.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block px-4 py-2 bg-purple-400 text-white rounded-lg hover:bg-purple-500 transition-colors"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                View Project
-              </motion.a>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }
