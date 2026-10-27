@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { bio, toolkit } from "../data/portfolioData";
 
 // Hand-drawn underline SVG
 const UnderlineDoodle = () => (
@@ -56,8 +57,7 @@ export default function About() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        I love building.
-        I've worked at the intersection of engineering, data, and product strategy: shipping code, digging into user telemetry, and figuring out whats worth building.
+        {bio}
       </motion.p>
 
       {/* Action buttons with notebook style */}
@@ -103,83 +103,55 @@ export default function About() {
         </motion.h3>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Product & Strategy Card */}
-          <motion.div
-            className="bg-card border-2 border-stone rounded-sm p-6 shadow-[4px_4px_0px_#DCD7CD] hover:shadow-[6px_6px_0px_#1E4631] hover:-translate-x-1 hover:-translate-y-1 transition-all relative"
-            initial={{ opacity: 0, y: 20, rotate: -0.5 }}
-            animate={{ opacity: 1, y: 0, rotate: -0.5 }}
-            whileHover={{ rotate: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            {/* Washi tape */}
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-5 bg-forest/20 border border-forest/10 rotate-1 shadow-sm" />
-            
-            <h4 className="text-xl font-serif font-bold text-ink mb-4">
-              Product & Strategy
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              {["User Research & Analyst Interviews", "Adoption Metrics", "Unit Economics Modeling", "Technical Specs & API Contracts", "Figma Prototyping"].map((skill, index) => (
-                <span
-                  key={index}
-                  className="font-mono text-xs bg-white text-ink border border-stone px-2.5 py-1 rounded-sm shadow-[2px_2px_0px_#DCD7CD]"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </motion.div>
+          {toolkit.map((group, groupIndex) => {
+            const cardStyles = [
+              {
+                rotate: -0.5,
+                hoverShadow: "hover:shadow-[6px_6px_0px_#1E4631]",
+                tape: "bg-forest/20 border-forest/10 rotate-1",
+              },
+              {
+                rotate: 0.7,
+                hoverShadow: "hover:shadow-[6px_6px_0px_#2A7B57]",
+                tape: "bg-emerald/20 border-emerald/10 -rotate-1",
+              },
+              {
+                rotate: -0.3,
+                hoverShadow: "hover:shadow-[6px_6px_0px_#D97736]",
+                tape: "bg-amber/20 border-amber/10 rotate-2",
+              },
+            ][groupIndex % 3];
 
-          {/* Data & Observability Card */}
-          <motion.div
-            className="bg-card border-2 border-stone rounded-sm p-6 shadow-[4px_4px_0px_#DCD7CD] hover:shadow-[6px_6px_0px_#2A7B57] hover:-translate-x-1 hover:-translate-y-1 transition-all relative"
-            initial={{ opacity: 0, y: 20, rotate: 0.7 }}
-            animate={{ opacity: 1, y: 0, rotate: 0.7 }}
-            whileHover={{ rotate: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            {/* Washi tape */}
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-5 bg-emerald/20 border border-emerald/10 -rotate-1 shadow-sm" />
-            
-            <h4 className="text-xl font-serif font-bold text-ink mb-4">
-              Data & Observability
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              {["SQL", "Python", "Datadog", "Telemetry & Time-Series Visualization", "Fraud & Risk Analytics"].map((skill, index) => (
-                <span
-                  key={index}
-                  className="font-mono text-xs bg-white text-ink border border-stone px-2.5 py-1 rounded-sm shadow-[2px_2px_0px_#DCD7CD]"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </motion.div>
+            return (
+              <motion.div
+                key={group.title}
+                className={`bg-card border-2 border-stone rounded-sm p-6 shadow-[4px_4px_0px_#DCD7CD] ${cardStyles.hoverShadow} hover:-translate-x-1 hover:-translate-y-1 transition-all relative`}
+                initial={{ opacity: 0, y: 20, rotate: cardStyles.rotate }}
+                animate={{ opacity: 1, y: 0, rotate: cardStyles.rotate }}
+                whileHover={{ rotate: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 + groupIndex * 0.2 }}
+              >
+                {/* Washi tape */}
+                <div
+                  className={`absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-5 border shadow-sm ${cardStyles.tape}`}
+                />
 
-          {/* Engineering Foundation Card */}
-          <motion.div
-            className="bg-card border-2 border-stone rounded-sm p-6 shadow-[4px_4px_0px_#DCD7CD] hover:shadow-[6px_6px_0px_#D97736] hover:-translate-x-1 hover:-translate-y-1 transition-all relative"
-            initial={{ opacity: 0, y: 20, rotate: -0.3 }}
-            animate={{ opacity: 1, y: 0, rotate: -0.3 }}
-            whileHover={{ rotate: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
-            {/* Washi tape */}
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-5 bg-amber/20 border border-amber/10 rotate-2 shadow-sm" />
-            
-            <h4 className="text-xl font-serif font-bold text-ink mb-4">
-              Engineering Foundation
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              {["TypeScript", "React / React Native", "Swift", "Ruby on Rails", "C++", "Cloudflare Developer Platform"].map((skill, index) => (
-                <span
-                  key={index}
-                  className="font-mono text-xs bg-white text-ink border border-stone px-2.5 py-1 rounded-sm shadow-[2px_2px_0px_#DCD7CD]"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </motion.div>
+                <h4 className="text-xl font-serif font-bold text-ink mb-4">
+                  {group.title}
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {group.items.map((skill) => (
+                    <span
+                      key={skill}
+                      className="font-mono text-xs bg-white text-ink border border-stone px-2.5 py-1 rounded-sm shadow-[2px_2px_0px_#DCD7CD]"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
 

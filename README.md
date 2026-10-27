@@ -5,26 +5,7 @@ Welcome to my personal portfolio website! This project showcases my work, skills
 ---
 ## 🌐 Live Preview
 
-[🔗 View the Website](https://taylor-devries.vercel.app/)
-
----
-
-## ✨ Features
-
-- 🧠 Minimalist and elegant design with a lilac-themed aesthetic
-- 🌀 Interactive 3D elements using `react-three-fiber` & `drei`
-- 🎨 Smooth page transitions and hover animations with `Framer Motion`
-- 🎧 Clickable 3D objects trigger visual transformations
-- 📱 Fully responsive for mobile and desktop
-- 💡 Dark mode/Light mode toggle 
-
----
-
-## 🔧 Tech Stack
-
-- **Frontend**: React, TailwindCSS
-- **3D & Animation**: Three.js (via `@react-three/fiber`), `@react-three/drei`, Framer Motion
-- **Hosting**: Vercel
+[🔗 View the Website](https://tdevries.ca/)
 
 ---
 

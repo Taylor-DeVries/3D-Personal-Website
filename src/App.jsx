@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Experience from "./pages/Experience";
-import NotebookFlip from "./components/NotebookFlip";
+import Notebook3D from "./components/Notebook3D";
 
 export default function App() {
   const { scrollYProgress } = useScroll();
@@ -98,7 +98,7 @@ export default function App() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <NotebookFlip />
+          <Notebook3D />
         </motion.section>
 
         <motion.section
