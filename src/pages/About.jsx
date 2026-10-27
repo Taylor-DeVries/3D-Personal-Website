@@ -1,17 +1,6 @@
 import { motion } from "framer-motion";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, MeshDistortMaterial } from "@react-three/drei";
-import { FaReact, FaAws, FaNodeJs, FaAngular, FaRobot } from "react-icons/fa"; 
-import {
-  SiTailwindcss,
-  SiTypescript,
-  SiCplusplus,
-  SiNextdotjs,
-  SiExpress,
-  SiPython,
-  SiRuby,
-  SiRubyonrails,
-} from "react-icons/si"; 
 import { useState, useEffect } from "react";
 
 function LilacTorusKnot() {
@@ -68,37 +57,6 @@ export default function About() {
     "/images/gallery/velocity.png",
   ];
 
-  const skills = [
-    { name: "React", icon: <FaReact className="text-blue-500 w-8 h-8" /> },
-    { name: "Angular", icon: <FaAngular className="text-red-500 w-8 h-8" /> },
-    {
-      name: "TypeScript",
-      icon: <SiTypescript className="text-blue-600 w-8 h-8" />,
-    },
-    {
-      name: "Node.js",
-      icon: <FaNodeJs className="text-green-500 w-8 h-8" />,
-    },
-    { name: "Next.js", icon: <SiNextdotjs className="text-black w-8 h-8" /> },
-    { name: "Ruby", icon: <SiRuby className="text-red-500 w-8 h-8" /> },
-    {
-      name: "Rails",
-      icon: <SiRubyonrails className="text-red-600 w-8 h-8" />,
-    },
-    { name: "Claude", icon: <FaRobot className="text-fuchsia-500 w-8 h-8" /> },
-    {
-      name: "Express.js",
-      icon: <SiExpress className="text-gray-500 w-8 h-8" />,
-    },
-    {
-      name: "Tailwind",
-      icon: <SiTailwindcss className="text-teal-500 w-8 h-8" />,
-    },
-    { name: "AWS", icon: <FaAws className="text-orange-500 w-8 h-8" /> },
-    { name: "C++", icon: <SiCplusplus className="text-blue-400 w-8 h-8" /> },
-    { name: "Python", icon: <SiPython className="text-blue-500 w-8 h-8" /> },
-  ];
-
   return (
     <section id="about-section" className="relative min-h-screen mt-6 px-6 py-16 flex flex-col items-center justify-center overflow-hidden">
       <motion.h2
@@ -116,14 +74,8 @@ export default function About() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        I'm a Software Engineering student at the University of Waterloo with a
-        strong technical background in full-stack and mobile — from Shopify and
-        Vivid Seats to co-founding FinBud. I've worked closely with product
-        managers to turn business goals into shipped features, and at FinBud I
-        owned product strategy, user research, and roadmap from discovery
-        through launch. My engineering depth is the foundation; what I'm
-        climbing toward now is a Product Manager role where I can bridge
-        technical execution with user-focused strategy.
+        I love building.
+        I’ve worked at the intersection of engineering, data, and product strategy: shipping code, digging into user telemetry, and figuring out whats worth building.
       </motion.p>
 
       {/* Buttons */}
@@ -157,25 +109,85 @@ export default function About() {
         </motion.button>
       </div>
 
-      {/* Skills Section */}
-      <div className="w-full max-w-4xl mb-12 z-10">
+      {/* How I Work / My Toolkit Section */}
+      <div className="w-full max-w-5xl mb-12 z-10">
         <motion.h3
-          className="text-3xl font-semibold text-[#333] dark:text-[#f5f4f2] mb-6 text-center"
+          className="text-3xl font-semibold text-[#333] dark:text-[#f5f4f2] mb-8 text-center"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Top skills
+          How I Work
         </motion.h3>
-        <div className="grid grid-cols-5 sm:grid-cols-5 md:grid-cols-5 lg:grid-cols-10 gap-4 justify-items-center">
-          {skills.map((skill, index) => (
-            <div key={index} className="flex flex-col items-center text-center">
-              {skill.icon}
-              <p className="mt-2 text-sm font-medium text-gray-700 dark:text-[#f5f4f2] hidden sm:block">
-                {skill.name}
-              </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Product & Strategy */}
+          <motion.div
+            className="bg-white/80 dark:bg-[#333]/80 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-purple-100 dark:border-purple-800 group"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <h4 className="text-lg font-bold text-gray-800 dark:text-white mb-4 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
+              Product & Strategy
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {["User Research & Analyst Interviews", "Adoption Metrics", "Unit Economics Modeling", "Technical Specs & API Contracts", "Figma Prototyping"].map((skill, index) => (
+                <span
+                  key={index}
+                  className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 text-sm font-medium rounded-full transition-colors duration-300 group-hover:bg-purple-200 dark:group-hover:bg-purple-800"
+                >
+                  {skill}
+                </span>
+              ))}
             </div>
-          ))}
+          </motion.div>
+
+          {/* Data & Observability */}
+          <motion.div
+            className="bg-white/80 dark:bg-[#333]/80 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-purple-100 dark:border-purple-800 group"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <h4 className="text-lg font-bold text-gray-800 dark:text-white mb-4 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
+              Data & Observability
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {["SQL", "Python", "Datadog", "Telemetry & Time-Series Visualization", "Fraud & Risk Analytics"].map((skill, index) => (
+                <span
+                  key={index}
+                  className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 text-sm font-medium rounded-full transition-colors duration-300 group-hover:bg-purple-200 dark:group-hover:bg-purple-800"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Engineering Foundation */}
+          <motion.div
+            className="bg-white/80 dark:bg-[#333]/80 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-purple-100 dark:border-purple-800 group"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
+            <h4 className="text-lg font-bold text-gray-800 dark:text-white mb-4 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
+              Engineering Foundation
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {["TypeScript", "React / React Native", "Swift", "Ruby on Rails", "C++", "Cloudflare Developer Platform"].map((skill, index) => (
+                <span
+                  key={index}
+                  className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 text-sm font-medium rounded-full transition-colors duration-300 group-hover:bg-purple-200 dark:group-hover:bg-purple-800"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
 

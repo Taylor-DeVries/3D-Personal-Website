@@ -105,9 +105,8 @@ export default function Home() {
         variants={itemVariants}
         whileHover={{ scale: 1.02 }}
       >
-        A software engineer with a product mindset who loves organizing chaos, building more with AI, 
-        and has deep technical roots, hands-on product experience, and eager to grow into PM roles.
-      </motion.p>
+        a Software Engineering student at the University of Waterloo
+        </motion.p>
 
       {/* Learn About Me Button */}
       <motion.div className="flex flex-col sm:flex-row items-center gap-3 z-10" variants={itemVariants}>
